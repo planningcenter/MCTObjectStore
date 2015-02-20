@@ -23,6 +23,8 @@
 		942F473E1A9188E500F74419 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F473D1A9188E500F74419 /* Person.m */; };
 		942F47411A9188E600F74419 /* PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47401A9188E600F74419 /* PhoneNumber.m */; };
 		942F47431A91895600F74419 /* MCTManagedObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47421A91895600F74419 /* MCTManagedObjectTests.m */; };
+		94418F781A96D409005E9193 /* TestModel_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94418F761A96D409005E9193 /* TestModel_2.xcdatamodeld */; };
+		94418F7B1A96D42E005E9193 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 94418F7A1A96D42E005E9193 /* User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,9 @@
 		942F473F1A9188E600F74419 /* PhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumber.h; sourceTree = "<group>"; };
 		942F47401A9188E600F74419 /* PhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumber.m; sourceTree = "<group>"; };
 		942F47421A91895600F74419 /* MCTManagedObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCTManagedObjectTests.m; sourceTree = "<group>"; };
+		94418F771A96D409005E9193 /* TestModel_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel_2.xcdatamodel; sourceTree = "<group>"; };
+		94418F791A96D42E005E9193 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		94418F7A1A96D42E005E9193 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +149,9 @@
 		942F471D1A90218900F74419 /* Object Model */ = {
 			isa = PBXGroup;
 			children = (
+				94418F761A96D409005E9193 /* TestModel_2.xcdatamodeld */,
+				94418F791A96D42E005E9193 /* User.h */,
+				94418F7A1A96D42E005E9193 /* User.m */,
 				942F471E1A9021A500F74419 /* TestModel.xcdatamodeld */,
 				942F473F1A9188E600F74419 /* PhoneNumber.h */,
 				942F47401A9188E600F74419 /* PhoneNumber.m */,
@@ -280,9 +288,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				942F473E1A9188E500F74419 /* Person.m in Sources */,
+				94418F7B1A96D42E005E9193 /* User.m in Sources */,
 				942F47181A901A6A00F74419 /* MCTObjectContextTests.m in Sources */,
 				942F47201A9021A500F74419 /* TestModel.xcdatamodeld in Sources */,
 				942F47411A9188E600F74419 /* PhoneNumber.m in Sources */,
+				94418F781A96D409005E9193 /* TestModel_2.xcdatamodeld in Sources */,
 				942F47431A91895600F74419 /* MCTManagedObjectTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,6 +449,7 @@
 				942F470D1A90192300F74419 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		942F470E1A90192300F74419 /* Build configuration list for PBXNativeTarget "MCTObjectStoreTests" */ = {
 			isa = XCConfigurationList;
@@ -447,6 +458,7 @@
 				942F47101A90192300F74419 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -458,6 +470,16 @@
 			);
 			currentVersion = 942F471F1A9021A500F74419 /* TestModel.xcdatamodel */;
 			path = TestModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		94418F761A96D409005E9193 /* TestModel_2.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				94418F771A96D409005E9193 /* TestModel_2.xcdatamodel */,
+			);
+			currentVersion = 94418F771A96D409005E9193 /* TestModel_2.xcdatamodel */;
+			path = TestModel_2.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

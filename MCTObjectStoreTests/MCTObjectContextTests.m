@@ -8,6 +8,7 @@
 #import <XCTest/XCTest.h>
 
 #import "Person.h"
+#import "User.h"
 
 @interface MCTObjectContextTests : XCTestCase
 
@@ -100,6 +101,20 @@
     }];
 
     XCTAssertEqualObjects(personOne.firstName, @"Test Edit");
+}
+
+- (void)testMergingSavesFromNewModel {
+    MCTObjectContext *context = [[MCTObjectContext alloc] init];
+    XCTAssertTrue([context prepareWithModelName:@"TestModel_2" bundle:[NSBundle bundleForClass:self.class] storeURL:nil]);
+    
+    User *user = [context insertNewObject:[User class]];
+    Person *person = [self.store insertNewObject:[Person class]];
+    
+    user.firstName = @"User";
+    person.firstName = @"Person";
+    
+    XCTAssertTrue([self.store save:NULL]);
+    XCTAssertTrue([context save:NULL]);
 }
 
 @end
