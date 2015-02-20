@@ -84,12 +84,35 @@
     if (self) {
         _queue = dispatch_queue_create("com.ministrycentered.ObjectStore", DISPATCH_QUEUE_CONCURRENT);
         _ready = NO;
+#if TARGET_OS_IPHONE
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationDidEnterBackgroundNotification:)
+                                                     name:UIApplicationDidEnterBackgroundNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationWillTerminateNotification:)
+                                                     name:UIApplicationWillTerminateNotification
+                                                   object:nil];
+#endif
     }
     return self;
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+// MARK: - Notification Handlers
+- (void)applicationDidEnterBackgroundNotification:(NSNotification *)notification {
+    if ([self isReady]) {
+        [self save:NULL];
+    }
+}
+- (void)applicationWillTerminateNotification:(NSNotification *)notification {
+    if ([self isReady]) {
+        [self save:NULL];
+    }
 }
 
 // MARK: - Perform in Context
@@ -117,6 +140,7 @@
     }];
 }
 
+// MARK: - Saving Contexts
 - (BOOL)save:(NSError **)error {
     BOOL __block success = YES;
     [self performInContext:^(NSManagedObjectContext *ctx) {
@@ -131,6 +155,7 @@
     return success;
 }
 
+// MARK: - Object Context Copy
 - (instancetype)newObjectContextWithType:(NSManagedObjectContextConcurrencyType)contextType error:(NSError **)error {
     typeof(self) obj = [[[self class] alloc] init];
     if (![obj prepareWithPersistentStoreCoordinator:self.context.persistentStoreCoordinator contextType:contextType error:error]) {

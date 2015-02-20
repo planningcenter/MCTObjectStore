@@ -34,6 +34,10 @@
 @import Foundation;
 @import CoreData;
 
+#if TARGET_OS_IPHONE
+@import UIKit;
+#endif
+
 /**
  *  Object that wraps a CoreData NSManagedObjectContext
  */
