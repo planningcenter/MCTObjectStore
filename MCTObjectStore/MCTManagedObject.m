@@ -39,21 +39,6 @@
 @implementation MCTManagedObject
 @synthesize orderCache = _orderCache;
 
-+ (NSString *)className {
-    return NSStringFromClass(self);
-}
-+ (NSEntityDescription *)entityInContext:(NSManagedObjectContext *)context {
-    return [NSEntityDescription entityForName:[self className] inManagedObjectContext:context];
-}
-+ (instancetype)insertIntoContext:(NSManagedObjectContext *)context {
-    return [[self alloc] initWithEntity:[self entityInContext:context] insertIntoManagedObjectContext:context];
-}
-
-// MARK: - Delete
-- (void)destroy {
-    [self.managedObjectContext deleteObject:self];
-}
-
 // MARK: - Changes
 - (void)didChangeValueForKey:(NSString *)inKey withSetMutation:(NSKeyValueSetMutationKind)inMutationKind usingObjects:(NSSet *)inObjects {
     [self clearOrderCacheForName:inKey];
@@ -92,6 +77,36 @@
     @synchronized([self class]) {
         [self.orderCache removeObjectForKey:name];
     }
+}
+
+@end
+
+
+@implementation NSManagedObject (MCTManagedObjectHelpers)
+
++ (NSString *)className {
+    return NSStringFromClass(self);
+}
++ (NSEntityDescription *)entityInContext:(NSManagedObjectContext *)context {
+    return [NSEntityDescription entityForName:[self className] inManagedObjectContext:context];
+}
++ (instancetype)insertIntoContext:(NSManagedObjectContext *)context {
+    return [[self alloc] initWithEntity:[self entityInContext:context] insertIntoManagedObjectContext:context];
+}
+
+// MARK: - Delete
+- (void)destroy {
+    [self.managedObjectContext deleteObject:self];
+}
+
+// MARK: - Info
++ (NSUInteger)countInContext:(NSManagedObjectContext *)context error:(NSError **)error {
+    return [self countInContext:context predicate:nil error:error];
+}
++ (NSUInteger)countInContext:(NSManagedObjectContext *)context predicate:(NSPredicate *)predicate error:(NSError **)error {
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[self className]];
+    fetchRequest.predicate = predicate;
+    return [context countForFetchRequest:fetchRequest error:error];
 }
 
 @end

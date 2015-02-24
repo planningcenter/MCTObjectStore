@@ -36,18 +36,28 @@
 
 @interface MCTManagedObject : NSManagedObject
 
+// MARK: - Order Cache
+- (NSArray *)cachedOrderedRelations:(NSString *)name sort:(NSArray *(^)(NSSet *))sort;
+- (void)clearOrderCache;
+- (void)clearOrderCacheForName:(NSString *)name;
+
+@end
+
+@interface NSManagedObject (MCTManagedObjectHelpers)
+
+// MARK: - Create
 + (NSString *)className;
 
 + (NSEntityDescription *)entityInContext:(NSManagedObjectContext *)context;
 
 + (instancetype)insertIntoContext:(NSManagedObjectContext *)context;
 
+// MARK: - Deleting
 - (void)destroy;
 
-// MARK: - Order Cache
-- (NSArray *)cachedOrderedRelations:(NSString *)name sort:(NSArray *(^)(NSSet *))sort;
-- (void)clearOrderCache;
-- (void)clearOrderCacheForName:(NSString *)name;
+// MARK: - Info
++ (NSUInteger)countInContext:(NSManagedObjectContext *)context error:(NSError **)error;
++ (NSUInteger)countInContext:(NSManagedObjectContext *)context predicate:(NSPredicate *)predicate error:(NSError **)error;
 
 @end
 

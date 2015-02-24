@@ -77,4 +77,16 @@
     }
 }
 
+- (void)testCount {
+    [self.store insertNewObject:[Person class]];
+    [self.store insertNewObject:[Person class]];
+    
+    XCTAssertEqual([Person countInContext:self.store.context error:NULL], 2);
+    
+    [self.store insertNewObject:[Person class]];
+    [self.store insertNewObject:[Person class]];
+    
+    XCTAssertEqual([Person countInContext:self.store.context error:NULL], 4);
+}
+
 @end
