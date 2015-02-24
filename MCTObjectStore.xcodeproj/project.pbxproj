@@ -7,50 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		942F47031A90192300F74419 /* libMCTObjectStore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 942F46F71A90192300F74419 /* libMCTObjectStore.a */; };
-		942F47121A90195700F74419 /* MCTObjectStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F46FA1A90192300F74419 /* MCTObjectStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		942F47151A90197600F74419 /* MCTObjectContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F47131A90197600F74419 /* MCTObjectContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		942F47161A90197600F74419 /* MCTObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47141A90197600F74419 /* MCTObjectContext.m */; };
 		942F47181A901A6A00F74419 /* MCTObjectContextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47171A901A6A00F74419 /* MCTObjectContextTests.m */; };
-		942F471A1A901AA600F74419 /* MCTObjectStoreVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F47191A901A9400F74419 /* MCTObjectStoreVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		942F471C1A90211600F74419 /* MCTObjectStoreLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F471B1A90209500F74419 /* MCTObjectStoreLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		942F47201A9021A500F74419 /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 942F471E1A9021A500F74419 /* TestModel.xcdatamodeld */; };
-		942F47261A90225100F74419 /* MCTManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F47241A90225100F74419 /* MCTManagedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		942F47271A90225100F74419 /* MCTManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47251A90225100F74419 /* MCTManagedObject.m */; };
-		942F47291A9024B200F74419 /* MCTObjectStoreError.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F47281A9024A500F74419 /* MCTObjectStoreError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		942F47371A91775A00F74419 /* MCTObjectStack.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F47351A91775A00F74419 /* MCTObjectStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		942F47381A91775A00F74419 /* MCTObjectStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47361A91775A00F74419 /* MCTObjectStack.m */; };
 		942F473E1A9188E500F74419 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F473D1A9188E500F74419 /* Person.m */; };
 		942F47411A9188E600F74419 /* PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47401A9188E600F74419 /* PhoneNumber.m */; };
 		942F47431A91895600F74419 /* MCTManagedObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47421A91895600F74419 /* MCTManagedObjectTests.m */; };
 		94418F781A96D409005E9193 /* TestModel_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94418F761A96D409005E9193 /* TestModel_2.xcdatamodeld */; };
 		94418F7B1A96D42E005E9193 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 94418F7A1A96D42E005E9193 /* User.m */; };
+		94D8E2BE1A9C4B0D004B6DAA /* MCTObjectStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47361A91775A00F74419 /* MCTObjectStack.m */; };
+		94D8E2BF1A9C4B0D004B6DAA /* MCTObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47141A90197600F74419 /* MCTObjectContext.m */; };
+		94D8E2C01A9C4B0D004B6DAA /* MCTManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47251A90225100F74419 /* MCTManagedObject.m */; };
+		94D8E2C11A9C4B27004B6DAA /* MCTObjectStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F46FA1A90192300F74419 /* MCTObjectStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94D8E2C21A9C4B27004B6DAA /* MCTObjectStoreVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F47191A901A9400F74419 /* MCTObjectStoreVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94D8E2C31A9C4B27004B6DAA /* MCTObjectStoreLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F471B1A90209500F74419 /* MCTObjectStoreLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94D8E2C41A9C4B27004B6DAA /* MCTObjectStoreError.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F47281A9024A500F74419 /* MCTObjectStoreError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94D8E2C51A9C4B27004B6DAA /* MCTObjectStack.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F47351A91775A00F74419 /* MCTObjectStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94D8E2C61A9C4B27004B6DAA /* MCTObjectContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F47131A90197600F74419 /* MCTObjectContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94D8E2C71A9C4B27004B6DAA /* MCTManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F47241A90225100F74419 /* MCTManagedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		942F47041A90192300F74419 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 942F46EF1A90192300F74419 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 942F46F61A90192300F74419;
-			remoteInfo = MCTObjectStore;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		942F46F51A90192300F74419 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		942F46F71A90192300F74419 /* libMCTObjectStore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMCTObjectStore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		942F46FA1A90192300F74419 /* MCTObjectStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCTObjectStore.h; sourceTree = "<group>"; };
 		942F47021A90192300F74419 /* MCTObjectStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MCTObjectStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		942F47081A90192300F74419 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,21 +49,21 @@
 		94418F771A96D409005E9193 /* TestModel_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel_2.xcdatamodel; sourceTree = "<group>"; };
 		94418F791A96D42E005E9193 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		94418F7A1A96D42E005E9193 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		94D8E2A51A9C4AD2004B6DAA /* MCTObjectStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCTObjectStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		942F46F41A90192300F74419 /* Frameworks */ = {
+		942F46FF1A90192300F74419 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		942F46FF1A90192300F74419 /* Frameworks */ = {
+		94D8E2A11A9C4AD2004B6DAA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				942F47031A90192300F74419 /* libMCTObjectStore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,8 +82,8 @@
 		942F46F81A90192300F74419 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				942F46F71A90192300F74419 /* libMCTObjectStore.a */,
 				942F47021A90192300F74419 /* MCTObjectStoreTests.xctest */,
+				94D8E2A51A9C4AD2004B6DAA /* MCTObjectStore.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -174,41 +150,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		942F47111A90194C00F74419 /* Headers */ = {
+		94D8E2A21A9C4AD2004B6DAA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				942F47151A90197600F74419 /* MCTObjectContext.h in Headers */,
-				942F47261A90225100F74419 /* MCTManagedObject.h in Headers */,
-				942F47121A90195700F74419 /* MCTObjectStore.h in Headers */,
-				942F47291A9024B200F74419 /* MCTObjectStoreError.h in Headers */,
-				942F471A1A901AA600F74419 /* MCTObjectStoreVersion.h in Headers */,
-				942F47371A91775A00F74419 /* MCTObjectStack.h in Headers */,
-				942F471C1A90211600F74419 /* MCTObjectStoreLog.h in Headers */,
+				94D8E2C11A9C4B27004B6DAA /* MCTObjectStore.h in Headers */,
+				94D8E2C21A9C4B27004B6DAA /* MCTObjectStoreVersion.h in Headers */,
+				94D8E2C31A9C4B27004B6DAA /* MCTObjectStoreLog.h in Headers */,
+				94D8E2C41A9C4B27004B6DAA /* MCTObjectStoreError.h in Headers */,
+				94D8E2C51A9C4B27004B6DAA /* MCTObjectStack.h in Headers */,
+				94D8E2C61A9C4B27004B6DAA /* MCTObjectContext.h in Headers */,
+				94D8E2C71A9C4B27004B6DAA /* MCTManagedObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		942F46F61A90192300F74419 /* MCTObjectStore */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 942F470B1A90192300F74419 /* Build configuration list for PBXNativeTarget "MCTObjectStore" */;
-			buildPhases = (
-				942F46F31A90192300F74419 /* Sources */,
-				942F46F41A90192300F74419 /* Frameworks */,
-				942F46F51A90192300F74419 /* CopyFiles */,
-				942F47111A90194C00F74419 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MCTObjectStore;
-			productName = MCTObjectStore;
-			productReference = 942F46F71A90192300F74419 /* libMCTObjectStore.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 		942F47011A90192300F74419 /* MCTObjectStoreTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 942F470E1A90192300F74419 /* Build configuration list for PBXNativeTarget "MCTObjectStoreTests" */;
@@ -220,12 +178,29 @@
 			buildRules = (
 			);
 			dependencies = (
-				942F47051A90192300F74419 /* PBXTargetDependency */,
 			);
 			name = MCTObjectStoreTests;
 			productName = MCTObjectStoreTests;
 			productReference = 942F47021A90192300F74419 /* MCTObjectStoreTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		94D8E2A41A9C4AD2004B6DAA /* MCTObjectStore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94D8E2B81A9C4AD2004B6DAA /* Build configuration list for PBXNativeTarget "MCTObjectStore" */;
+			buildPhases = (
+				94D8E2A01A9C4AD2004B6DAA /* Sources */,
+				94D8E2A11A9C4AD2004B6DAA /* Frameworks */,
+				94D8E2A21A9C4AD2004B6DAA /* Headers */,
+				94D8E2A31A9C4AD2004B6DAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MCTObjectStore;
+			productName = MCTObjectStore;
+			productReference = 94D8E2A51A9C4AD2004B6DAA /* MCTObjectStore.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -236,10 +211,10 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Ministry Centered Technology";
 				TargetAttributes = {
-					942F46F61A90192300F74419 = {
+					942F47011A90192300F74419 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
-					942F47011A90192300F74419 = {
+					94D8E2A41A9C4AD2004B6DAA = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
 				};
@@ -256,7 +231,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				942F46F61A90192300F74419 /* MCTObjectStore */,
+				94D8E2A41A9C4AD2004B6DAA /* MCTObjectStore */,
 				942F47011A90192300F74419 /* MCTObjectStoreTests */,
 			);
 		};
@@ -270,19 +245,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		942F46F31A90192300F74419 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+		94D8E2A31A9C4AD2004B6DAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				942F47381A91775A00F74419 /* MCTObjectStack.m in Sources */,
-				942F47161A90197600F74419 /* MCTObjectContext.m in Sources */,
-				942F47271A90225100F74419 /* MCTManagedObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
 		942F46FE1A90192300F74419 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -297,15 +269,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		942F47051A90192300F74419 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 942F46F61A90192300F74419 /* MCTObjectStore */;
-			targetProxy = 942F47041A90192300F74419 /* PBXContainerItemProxy */;
+		94D8E2A01A9C4AD2004B6DAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94D8E2BE1A9C4B0D004B6DAA /* MCTObjectStack.m in Sources */,
+				94D8E2BF1A9C4B0D004B6DAA /* MCTObjectContext.m in Sources */,
+				94D8E2C01A9C4B0D004B6DAA /* MCTManagedObject.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXTargetDependency section */
+/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		942F47091A90192300F74419 /* Debug */ = {
@@ -382,24 +356,6 @@
 			};
 			name = Release;
 		};
-		942F470C1A90192300F74419 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		942F470D1A90192300F74419 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		942F470F1A90192300F74419 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -430,6 +386,50 @@
 			};
 			name = Release;
 		};
+		94D8E2B91A9C4AD2004B6DAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MCTObjectStore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		94D8E2BA1A9C4AD2004B6DAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = MCTObjectStore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -442,15 +442,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		942F470B1A90192300F74419 /* Build configuration list for PBXNativeTarget "MCTObjectStore" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				942F470C1A90192300F74419 /* Debug */,
-				942F470D1A90192300F74419 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		942F470E1A90192300F74419 /* Build configuration list for PBXNativeTarget "MCTObjectStoreTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -459,6 +450,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		94D8E2B81A9C4AD2004B6DAA /* Build configuration list for PBXNativeTarget "MCTObjectStore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94D8E2B91A9C4AD2004B6DAA /* Debug */,
+				94D8E2BA1A9C4AD2004B6DAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 

@@ -117,4 +117,26 @@
     XCTAssertTrue([context save:NULL]);
 }
 
+- (void)testMergeConflicts {
+    MCTObjectContext *context = [self.store newObjectContextWithType:NSMainQueueConcurrencyType error:NULL];
+    XCTAssertNotNil(context);
+    
+    Person *person_1 = [context insertNewObject:[Person class]];
+    person_1.firstName = @"Test";
+    person_1.lastName = @"Person";
+    
+    XCTAssertTrue([context save:NULL]);
+    
+    Person *person_2 = [[self.store all:[Person class] where:@"firstName == %@",@"Test"] firstObject];
+    
+    person_1.firstName = @"Test 1";
+    person_2.firstName = @"Test 2";
+    
+    XCTAssertTrue([context save:NULL]);
+    XCTAssertTrue([self.store save:NULL]);
+    
+    XCTAssertEqualObjects(person_1.firstName, @"Test 2");
+    XCTAssertEqualObjects(person_2.firstName, @"Test 2");
+}
+
 @end
