@@ -24,7 +24,49 @@
 		94D8E2C51A9C4B27004B6DAA /* MCTObjectStack.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F47351A91775A00F74419 /* MCTObjectStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		94D8E2C61A9C4B27004B6DAA /* MCTObjectContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F47131A90197600F74419 /* MCTObjectContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		94D8E2C71A9C4B27004B6DAA /* MCTManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F47241A90225100F74419 /* MCTManagedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94ED94671A9C4CD800287393 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94ED94661A9C4CD800287393 /* main.m */; };
+		94ED946A1A9C4CD800287393 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94ED94691A9C4CD800287393 /* AppDelegate.m */; };
+		94ED94701A9C4CD800287393 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94ED946E1A9C4CD800287393 /* Main.storyboard */; };
+		94ED94721A9C4CD800287393 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94ED94711A9C4CD800287393 /* Images.xcassets */; };
+		94ED94751A9C4CD800287393 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94ED94731A9C4CD800287393 /* LaunchScreen.xib */; };
+		94ED94811A9C4CD800287393 /* MCTObjectStoreAppTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 94ED94801A9C4CD800287393 /* MCTObjectStoreAppTestTests.m */; };
+		94ED94881A9C4CE300287393 /* MCTObjectStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D8E2A51A9C4AD2004B6DAA /* MCTObjectStore.framework */; };
+		94ED94891A9C4CE300287393 /* MCTObjectStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94D8E2A51A9C4AD2004B6DAA /* MCTObjectStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		94ED948F1A9C4D0400287393 /* ListModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94ED948D1A9C4D0400287393 /* ListModel.xcdatamodeld */; };
+		94ED94921A9C4D3C00287393 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 94ED94911A9C4D3C00287393 /* Item.m */; };
+		94ED94951A9C4ECB00287393 /* ListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94ED94941A9C4ECB00287393 /* ListTableViewController.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		94ED947B1A9C4CD800287393 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 942F46EF1A90192300F74419 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94ED94611A9C4CD800287393;
+			remoteInfo = MCTObjectStoreAppTest;
+		};
+		94ED948A1A9C4CE300287393 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 942F46EF1A90192300F74419 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94D8E2A41A9C4AD2004B6DAA;
+			remoteInfo = MCTObjectStore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		94ED948C1A9C4CE300287393 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				94ED94891A9C4CE300287393 /* MCTObjectStore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		942F46FA1A90192300F74419 /* MCTObjectStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCTObjectStore.h; sourceTree = "<group>"; };
@@ -50,6 +92,22 @@
 		94418F791A96D42E005E9193 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		94418F7A1A96D42E005E9193 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		94D8E2A51A9C4AD2004B6DAA /* MCTObjectStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCTObjectStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94ED94621A9C4CD800287393 /* MCTObjectStoreAppTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCTObjectStoreAppTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94ED94651A9C4CD800287393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94ED94661A9C4CD800287393 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		94ED94681A9C4CD800287393 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		94ED94691A9C4CD800287393 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		94ED946F1A9C4CD800287393 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		94ED94711A9C4CD800287393 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		94ED94741A9C4CD800287393 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		94ED947A1A9C4CD800287393 /* MCTObjectStoreAppTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MCTObjectStoreAppTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		94ED947F1A9C4CD800287393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94ED94801A9C4CD800287393 /* MCTObjectStoreAppTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCTObjectStoreAppTestTests.m; sourceTree = "<group>"; };
+		94ED948E1A9C4D0400287393 /* ListModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ListModel.xcdatamodel; sourceTree = "<group>"; };
+		94ED94901A9C4D3C00287393 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		94ED94911A9C4D3C00287393 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		94ED94931A9C4ECB00287393 /* ListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewController.h; sourceTree = "<group>"; };
+		94ED94941A9C4ECB00287393 /* ListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +125,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		94ED945F1A9C4CD800287393 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94ED94881A9C4CE300287393 /* MCTObjectStore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94ED94771A9C4CD800287393 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -75,6 +148,8 @@
 			children = (
 				942F46F91A90192300F74419 /* MCTObjectStore */,
 				942F47061A90192300F74419 /* MCTObjectStoreTests */,
+				94ED94631A9C4CD800287393 /* MCTObjectStoreAppTest */,
+				94ED947D1A9C4CD800287393 /* MCTObjectStoreAppTestTests */,
 				942F46F81A90192300F74419 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,6 +159,8 @@
 			children = (
 				942F47021A90192300F74419 /* MCTObjectStoreTests.xctest */,
 				94D8E2A51A9C4AD2004B6DAA /* MCTObjectStore.framework */,
+				94ED94621A9C4CD800287393 /* MCTObjectStoreAppTest.app */,
+				94ED947A1A9C4CD800287393 /* MCTObjectStoreAppTestTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,6 +224,50 @@
 			name = "Helper Headers";
 			sourceTree = "<group>";
 		};
+		94ED94631A9C4CD800287393 /* MCTObjectStoreAppTest */ = {
+			isa = PBXGroup;
+			children = (
+				94ED94901A9C4D3C00287393 /* Item.h */,
+				94ED94911A9C4D3C00287393 /* Item.m */,
+				94ED94681A9C4CD800287393 /* AppDelegate.h */,
+				94ED94691A9C4CD800287393 /* AppDelegate.m */,
+				94ED94931A9C4ECB00287393 /* ListTableViewController.h */,
+				94ED94941A9C4ECB00287393 /* ListTableViewController.m */,
+				94ED946E1A9C4CD800287393 /* Main.storyboard */,
+				94ED94711A9C4CD800287393 /* Images.xcassets */,
+				94ED94731A9C4CD800287393 /* LaunchScreen.xib */,
+				94ED94641A9C4CD800287393 /* Supporting Files */,
+			);
+			path = MCTObjectStoreAppTest;
+			sourceTree = "<group>";
+		};
+		94ED94641A9C4CD800287393 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				94ED948D1A9C4D0400287393 /* ListModel.xcdatamodeld */,
+				94ED94651A9C4CD800287393 /* Info.plist */,
+				94ED94661A9C4CD800287393 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		94ED947D1A9C4CD800287393 /* MCTObjectStoreAppTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				94ED94801A9C4CD800287393 /* MCTObjectStoreAppTestTests.m */,
+				94ED947E1A9C4CD800287393 /* Supporting Files */,
+			);
+			path = MCTObjectStoreAppTestTests;
+			sourceTree = "<group>";
+		};
+		94ED947E1A9C4CD800287393 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				94ED947F1A9C4CD800287393 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -202,6 +323,43 @@
 			productReference = 94D8E2A51A9C4AD2004B6DAA /* MCTObjectStore.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		94ED94611A9C4CD800287393 /* MCTObjectStoreAppTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94ED94861A9C4CD800287393 /* Build configuration list for PBXNativeTarget "MCTObjectStoreAppTest" */;
+			buildPhases = (
+				94ED945E1A9C4CD800287393 /* Sources */,
+				94ED945F1A9C4CD800287393 /* Frameworks */,
+				94ED94601A9C4CD800287393 /* Resources */,
+				94ED948C1A9C4CE300287393 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94ED948B1A9C4CE300287393 /* PBXTargetDependency */,
+			);
+			name = MCTObjectStoreAppTest;
+			productName = MCTObjectStoreAppTest;
+			productReference = 94ED94621A9C4CD800287393 /* MCTObjectStoreAppTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		94ED94791A9C4CD800287393 /* MCTObjectStoreAppTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94ED94871A9C4CD800287393 /* Build configuration list for PBXNativeTarget "MCTObjectStoreAppTestTests" */;
+			buildPhases = (
+				94ED94761A9C4CD800287393 /* Sources */,
+				94ED94771A9C4CD800287393 /* Frameworks */,
+				94ED94781A9C4CD800287393 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94ED947C1A9C4CD800287393 /* PBXTargetDependency */,
+			);
+			name = MCTObjectStoreAppTestTests;
+			productName = MCTObjectStoreAppTestTests;
+			productReference = 94ED947A1A9C4CD800287393 /* MCTObjectStoreAppTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -217,6 +375,13 @@
 					94D8E2A41A9C4AD2004B6DAA = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
+					94ED94611A9C4CD800287393 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					94ED94791A9C4CD800287393 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 94ED94611A9C4CD800287393;
+					};
 				};
 			};
 			buildConfigurationList = 942F46F21A90192300F74419 /* Build configuration list for PBXProject "MCTObjectStore" */;
@@ -225,6 +390,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 942F46EE1A90192300F74419;
 			productRefGroup = 942F46F81A90192300F74419 /* Products */;
@@ -233,6 +399,8 @@
 			targets = (
 				94D8E2A41A9C4AD2004B6DAA /* MCTObjectStore */,
 				942F47011A90192300F74419 /* MCTObjectStoreTests */,
+				94ED94611A9C4CD800287393 /* MCTObjectStoreAppTest */,
+				94ED94791A9C4CD800287393 /* MCTObjectStoreAppTestTests */,
 			);
 		};
 /* End PBXProject section */
@@ -246,6 +414,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		94D8E2A31A9C4AD2004B6DAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94ED94601A9C4CD800287393 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94ED94701A9C4CD800287393 /* Main.storyboard in Resources */,
+				94ED94751A9C4CD800287393 /* LaunchScreen.xib in Resources */,
+				94ED94721A9C4CD800287393 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94ED94781A9C4CD800287393 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -279,7 +464,59 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		94ED945E1A9C4CD800287393 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94ED94921A9C4D3C00287393 /* Item.m in Sources */,
+				94ED946A1A9C4CD800287393 /* AppDelegate.m in Sources */,
+				94ED94671A9C4CD800287393 /* main.m in Sources */,
+				94ED948F1A9C4D0400287393 /* ListModel.xcdatamodeld in Sources */,
+				94ED94951A9C4ECB00287393 /* ListTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94ED94761A9C4CD800287393 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94ED94811A9C4CD800287393 /* MCTObjectStoreAppTestTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		94ED947C1A9C4CD800287393 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94ED94611A9C4CD800287393 /* MCTObjectStoreAppTest */;
+			targetProxy = 94ED947B1A9C4CD800287393 /* PBXContainerItemProxy */;
+		};
+		94ED948B1A9C4CE300287393 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94D8E2A41A9C4AD2004B6DAA /* MCTObjectStore */;
+			targetProxy = 94ED948A1A9C4CE300287393 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		94ED946E1A9C4CD800287393 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94ED946F1A9C4CD800287393 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		94ED94731A9C4CD800287393 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94ED94741A9C4CD800287393 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		942F47091A90192300F74419 /* Debug */ = {
@@ -430,6 +667,66 @@
 			};
 			name = Release;
 		};
+		94ED94821A9C4CD800287393 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MCTObjectStoreAppTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		94ED94831A9C4CD800287393 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = MCTObjectStoreAppTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		94ED94841A9C4CD800287393 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MCTObjectStoreAppTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MCTObjectStoreAppTest.app/MCTObjectStoreAppTest";
+			};
+			name = Debug;
+		};
+		94ED94851A9C4CD800287393 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MCTObjectStoreAppTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MCTObjectStoreAppTest.app/MCTObjectStoreAppTest";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -458,6 +755,23 @@
 				94D8E2BA1A9C4AD2004B6DAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94ED94861A9C4CD800287393 /* Build configuration list for PBXNativeTarget "MCTObjectStoreAppTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94ED94821A9C4CD800287393 /* Debug */,
+				94ED94831A9C4CD800287393 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		94ED94871A9C4CD800287393 /* Build configuration list for PBXNativeTarget "MCTObjectStoreAppTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94ED94841A9C4CD800287393 /* Debug */,
+				94ED94851A9C4CD800287393 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
@@ -479,6 +793,16 @@
 			);
 			currentVersion = 94418F771A96D409005E9193 /* TestModel_2.xcdatamodel */;
 			path = TestModel_2.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		94ED948D1A9C4D0400287393 /* ListModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				94ED948E1A9C4D0400287393 /* ListModel.xcdatamodel */,
+			);
+			currentVersion = 94ED948E1A9C4D0400287393 /* ListModel.xcdatamodel */;
+			path = ListModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
