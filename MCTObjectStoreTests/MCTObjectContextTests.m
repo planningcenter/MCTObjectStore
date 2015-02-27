@@ -87,7 +87,7 @@
     XCTAssertTrue([self.store save:NULL]);
 
     [self.store performInDisposable:^(NSManagedObjectContext *ctx) {
-        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[Person className]];
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[Person entityName]];
         fetchRequest.predicate = [NSPredicate predicateWithFormat:@"firstName == %@",@"Test"];
         fetchRequest.fetchLimit = 1;
 

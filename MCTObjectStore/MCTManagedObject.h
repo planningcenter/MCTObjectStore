@@ -46,6 +46,7 @@
 @interface NSManagedObject (MCTManagedObjectHelpers)
 
 // MARK: - Create
++ (NSString *)entityName;
 + (NSString *)className;
 
 + (NSEntityDescription *)entityInContext:(NSManagedObjectContext *)context;

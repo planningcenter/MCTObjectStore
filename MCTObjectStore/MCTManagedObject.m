@@ -84,11 +84,14 @@
 
 @implementation NSManagedObject (MCTManagedObjectHelpers)
 
++ (NSString *)entityName {
+    return [self className];
+}
 + (NSString *)className {
     return NSStringFromClass(self);
 }
 + (NSEntityDescription *)entityInContext:(NSManagedObjectContext *)context {
-    return [NSEntityDescription entityForName:[self className] inManagedObjectContext:context];
+    return [NSEntityDescription entityForName:[self entityName] inManagedObjectContext:context];
 }
 + (instancetype)insertIntoContext:(NSManagedObjectContext *)context {
     return [[self alloc] initWithEntity:[self entityInContext:context] insertIntoManagedObjectContext:context];
@@ -104,7 +107,7 @@
     return [self countInContext:context predicate:nil error:error];
 }
 + (NSUInteger)countInContext:(NSManagedObjectContext *)context predicate:(NSPredicate *)predicate error:(NSError **)error {
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[self className]];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
     fetchRequest.predicate = predicate;
     return [context countForFetchRequest:fetchRequest error:error];
 }
