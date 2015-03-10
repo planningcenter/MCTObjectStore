@@ -92,4 +92,9 @@
     return YES;
 }
 
+// MARK: - Helpers
+- (void)performInDisposable:(void(^)(NSManagedObjectContext *ctx))block {
+    [self.mainContext performInDisposable:block];
+}
+
 @end

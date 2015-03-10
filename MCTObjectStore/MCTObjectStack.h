@@ -48,6 +48,8 @@
 
 - (BOOL)prepareModelWithName:(NSString *)name bundle:(NSBundle *)bundle location:(NSURL *)location error:(NSError **)error;
 
+- (void)performInDisposable:(void(^)(NSManagedObjectContext *ctx))block;
+
 @end
 
 #endif
