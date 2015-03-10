@@ -134,8 +134,11 @@
     [ctx performBlockAndWait:^{
         block(ctx);
         NSError *error = nil;
-        if ([ctx hasChanges] && ![ctx save:&error]) {
-            MCTOSLog(@"Failed to save context: %@",error);
+        if ([ctx hasChanges]) {
+            MCTOSLog(@"Saving disposable context");
+            if (![ctx save:&error]) {
+                MCTOSLog(@"Failed to save context: %@",error);
+            }
         }
     }];
 }
