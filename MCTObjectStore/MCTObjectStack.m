@@ -77,7 +77,7 @@
     }
 
     MCTObjectContext *main = [[MCTObjectContext alloc] init];
-    if (![main prepareWithModel:model storeURL:location persistentStoreType:NSSQLiteStoreType contextType:NSMainQueueConcurrencyType error:error]) {
+    if (![main prepareWithModel:model storeURL:location persistentStoreType:nil contextType:NSMainQueueConcurrencyType error:error]) {
         return NO;
     }
 
