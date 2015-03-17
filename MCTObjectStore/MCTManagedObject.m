@@ -29,6 +29,7 @@
  */
 
 #import "MCTManagedObject.h"
+#import "MCTObjectStoreError.h"
 
 @interface MCTManagedObject ()
 
@@ -79,6 +80,54 @@
     }
 }
 
+// MARK: - Callbacks
+- (void)didSave {
+    if (![[self objectID] isTemporaryID]) {
+        if ([self hasChanges] && ![self isDeleted]) {
+            [self mct_sendDidSaveNotification];
+        } else if ([self isDeleted]) {
+            [self mct_sendDeletedNotification];
+        }
+    }
+    [super didSave];
+}
+- (void)mct_sendDidSaveNotification {
+    NSManagedObjectID *objectID = [self objectID];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:MCTManagedObjectDidSaveChangesNotification object:objectID];
+    });
+}
+- (void)mct_sendDeletedNotification {
+    NSManagedObjectID *objectID = [self objectID];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:MCTManagedObjectDidDeleteNotification object:objectID];
+    });
+}
+
+// MARK: - Helpers
++ (id)objectForNotification:(NSNotification *)notification context:(NSManagedObjectContext *)context error:(NSError **)error {
+    NSParameterAssert(notification);
+    NSParameterAssert(context);
+    if (![notification.name isEqualToString:MCTManagedObjectDidSaveChangesNotification]) {
+        @throw [NSException exceptionWithName:MCTObjectStoreGenericException reason:[NSString stringWithFormat:@"Can't get object with notification of type %@",notification.name] userInfo:nil];
+    }
+    if (![notification.object isKindOfClass:[NSManagedObjectID class]]) {
+        if (error != NULL) {
+            *error = [NSError errorWithDomain:MCTObjectStoreErrorDomain
+                                         code:MCTObjectStoreErrorNoObjectID
+                                     userInfo:@{
+                                                NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedString(@"Can't fetch object without an objectID, got %@", nil),notification.object]
+                                                }];
+        }
+        return nil;
+    }
+    id __block object = nil;
+    [context performBlockAndWait:^{
+        object = [context existingObjectWithID:notification.object error:error];
+    }];
+    return object;
+}
+
 @end
 
 
@@ -113,3 +162,6 @@
 }
 
 @end
+
+NSString *const MCTManagedObjectDidSaveChangesNotification = @"MCTManagedObjectDidSaveChangesNotification";
+NSString *const MCTManagedObjectDidDeleteNotification = @"MCTManagedObjectDidDeleteNotification";

@@ -41,6 +41,9 @@
 - (void)clearOrderCache;
 - (void)clearOrderCacheForName:(NSString *)name;
 
+// MARK: - Helpers
++ (id)objectForNotification:(NSNotification *)notification context:(NSManagedObjectContext *)context error:(NSError **)error;
+
 @end
 
 @interface NSManagedObject (MCTManagedObjectHelpers)
@@ -61,5 +64,8 @@
 + (NSUInteger)countInContext:(NSManagedObjectContext *)context predicate:(NSPredicate *)predicate error:(NSError **)error;
 
 @end
+
+COREDATA_EXTERN NSString *const MCTManagedObjectDidSaveChangesNotification;
+COREDATA_EXTERN NSString *const MCTManagedObjectDidDeleteNotification;
 
 #endif

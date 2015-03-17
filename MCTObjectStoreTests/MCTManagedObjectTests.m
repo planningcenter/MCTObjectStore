@@ -27,7 +27,7 @@
 }
 
 - (void)tearDown {
-
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super tearDown];
 }
 
@@ -87,6 +87,26 @@
     [self.store insertNewObject:[Person class]];
     
     XCTAssertEqual([Person countInContext:self.store.context error:NULL], 4);
+}
+
+- (void)testDeletingObject {
+    Person *person = [self.store insertNewObject:[Person class]];
+    XCTAssertTrue([self.store save:NULL]);
+
+    [person destroy];
+
+    XCTAssertTrue([self.store save:NULL]);
+}
+- (void)testThrowBadNotificationExceptions {
+    XCTAssertThrowsSpecificNamed([Person objectForNotification:[NSNotification notificationWithName:@"Junk" object:nil] context:self.store.context error:NULL], NSException, MCTObjectStoreGenericException);
+}
+- (void)testObjectForNotification {
+    Person *person = [self.store insertNewObject:[Person class]];
+    XCTAssertTrue([self.store save:NULL]);
+
+    Person *newPerson = [Person objectForNotification:[NSNotification notificationWithName:MCTManagedObjectDidSaveChangesNotification object:person.objectID] context:self.store.context error:NULL];
+
+    XCTAssertEqualObjects(person, newPerson);
 }
 
 @end

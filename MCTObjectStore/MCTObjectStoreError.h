@@ -37,7 +37,8 @@ FOUNDATION_EXTERN NSString * const MCTObjectStoreErrorDomain;
 
 typedef NS_ENUM(NSInteger, MCTObjectStoreError) {
     MCTObjectStoreErrorGeneric       = 0,
-    MCTObjectStoreErrorModelNotFound = -404
+    MCTObjectStoreErrorModelNotFound = -404,
+    MCTObjectStoreErrorNoObjectID    = -1556
 };
 
 FOUNDATION_EXTERN NSString * const MCTObjectStoreGenericException;
