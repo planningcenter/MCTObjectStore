@@ -14,6 +14,7 @@
 		942F47431A91895600F74419 /* MCTManagedObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47421A91895600F74419 /* MCTManagedObjectTests.m */; };
 		94418F781A96D409005E9193 /* TestModel_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94418F761A96D409005E9193 /* TestModel_2.xcdatamodeld */; };
 		94418F7B1A96D42E005E9193 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 94418F7A1A96D42E005E9193 /* User.m */; };
+		94705B3F1AB9D89200DC9117 /* MCTObjectStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D8E2A51A9C4AD2004B6DAA /* MCTObjectStore.framework */; };
 		94D8E2BE1A9C4B0D004B6DAA /* MCTObjectStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47361A91775A00F74419 /* MCTObjectStack.m */; };
 		94D8E2BF1A9C4B0D004B6DAA /* MCTObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47141A90197600F74419 /* MCTObjectContext.m */; };
 		94D8E2C01A9C4B0D004B6DAA /* MCTManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47251A90225100F74419 /* MCTManagedObject.m */; };
@@ -38,6 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		94705B3D1AB9D88E00DC9117 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 942F46EF1A90192300F74419 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94D8E2A41A9C4AD2004B6DAA;
+			remoteInfo = MCTObjectStore;
+		};
 		94ED947B1A9C4CD800287393 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 942F46EF1A90192300F74419 /* Project object */;
@@ -115,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94705B3F1AB9D89200DC9117 /* MCTObjectStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +308,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				94705B3E1AB9D88E00DC9117 /* PBXTargetDependency */,
 			);
 			name = MCTObjectStoreTests;
 			productName = MCTObjectStoreTests;
@@ -487,6 +497,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		94705B3E1AB9D88E00DC9117 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94D8E2A41A9C4AD2004B6DAA /* MCTObjectStore */;
+			targetProxy = 94705B3D1AB9D88E00DC9117 /* PBXContainerItemProxy */;
+		};
 		94ED947C1A9C4CD800287393 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 94ED94611A9C4CD800287393 /* MCTObjectStoreAppTest */;
