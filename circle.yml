@@ -1,3 +1,13 @@
+machine:
+  environment:
+    LANG: en_US.UTF-8
+  xcode:
+    version: "6.3"
 test:
   override:
-    - xcodebuild -project MCTObjectStore.xcodeproj -scheme MCTObjectStore -sdk iphonesimulator test | xcpretty -c && exit ${PIPESTATUS[0]}
+    - set -o pipefail &&
+      xcodebuild
+        -project MCTObjectStore.xcodeproj
+        -scheme MCTObjectStore
+        -sdk iphonesimulator test
+      | xcpretty -c
