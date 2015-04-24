@@ -33,6 +33,8 @@
 
 @import Foundation;
 
+NS_ASSUME_NONNULL_BEGIN
+
 FOUNDATION_EXTERN NSString * const MCTObjectStoreErrorDomain;
 
 typedef NS_ENUM(NSInteger, MCTObjectStoreError) {
@@ -42,5 +44,7 @@ typedef NS_ENUM(NSInteger, MCTObjectStoreError) {
 };
 
 FOUNDATION_EXTERN NSString * const MCTObjectStoreGenericException;
+
+NS_ASSUME_NONNULL_END
 
 #endif

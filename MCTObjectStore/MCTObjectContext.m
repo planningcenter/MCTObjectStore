@@ -32,6 +32,7 @@
 #import "MCTObjectStoreVersion.h"
 #import "MCTObjectStoreLog.h"
 #import "MCTObjectStoreError.h"
+#import "MCTObjectStoreHelpers.h"
 
 #define CHECK_TYPE_EXE(x_type) if (![type isSubclassOfClass:[NSManagedObject class]]) { \
 @throw [NSException exceptionWithName:MCTObjectStoreGenericException \
@@ -117,18 +118,21 @@
 
 // MARK: - Perform in Context
 - (void)performInContext:(void(^)(NSManagedObjectContext *ctx))block {
+    MCTOSParamAssert(block);
     NSManagedObjectContext *ctx = self.context;
     [ctx performBlockAndWait:^{
         block(ctx);
     }];
 }
 - (void)performAsyncInContext:(void(^)(NSManagedObjectContext *ctx))block {
+    MCTOSParamAssert(block);
     NSManagedObjectContext *ctx = self.context;
     [ctx performBlock:^{
         block(ctx);
     }];
 }
 - (void)performInDisposable:(void(^)(NSManagedObjectContext *ctx))block {
+    MCTOSParamAssert(block);
     NSManagedObjectContext *ctx = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     ctx.persistentStoreCoordinator = self.context.persistentStoreCoordinator;
     [ctx performBlockAndWait:^{
@@ -201,6 +205,8 @@
     return [self prepareWithPersistentStoreCoordinator:psc contextType:contextType error:error];
 }
 - (BOOL)prepareWithPersistentStoreCoordinator:(NSPersistentStoreCoordinator *)coordinator contextType:(NSManagedObjectContextConcurrencyType)contextType error:(NSError **)error {
+    MCTOSParamAssert(coordinator);
+
     NSManagedObjectContext *ctx = [[NSManagedObjectContext alloc] initWithConcurrencyType:contextType];
     ctx.persistentStoreCoordinator = coordinator;
     ctx.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy;
@@ -218,6 +224,7 @@
 }
 
 + (NSManagedObjectModel *)modelWithName:(NSString *)name bundle:(NSBundle *)bundle {
+    MCTOSParamAssert(name);
     NSURL *URL = [bundle URLForResource:name withExtension:@"momd"];
     if (!URL) {
         URL = [bundle URLForResource:name withExtension:@"mom"];

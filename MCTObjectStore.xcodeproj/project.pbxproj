@@ -99,6 +99,7 @@
 		94418F771A96D409005E9193 /* TestModel_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel_2.xcdatamodel; sourceTree = "<group>"; };
 		94418F791A96D42E005E9193 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		94418F7A1A96D42E005E9193 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		945D4B721AEAA6670058D9EF /* MCTObjectStoreHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCTObjectStoreHelpers.h; sourceTree = "<group>"; };
 		94D8E2A51A9C4AD2004B6DAA /* MCTObjectStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCTObjectStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94ED94621A9C4CD800287393 /* MCTObjectStoreAppTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCTObjectStoreAppTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94ED94651A9C4CD800287393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -226,6 +227,7 @@
 		942F472A1A9024B800F74419 /* Helper Headers */ = {
 			isa = PBXGroup;
 			children = (
+				945D4B721AEAA6670058D9EF /* MCTObjectStoreHelpers.h */,
 				942F47191A901A9400F74419 /* MCTObjectStoreVersion.h */,
 				942F471B1A90209500F74419 /* MCTObjectStoreLog.h */,
 				942F47281A9024A500F74419 /* MCTObjectStoreError.h */,

@@ -34,22 +34,26 @@
 @import Foundation;
 @import CoreData;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class MCTObjectContext;
 @class MCTManagedObject;
 
 @interface MCTObjectStack : NSObject
 
-@property (atomic, strong, readonly) MCTObjectContext *mainContext;
-@property (atomic, strong, readonly) MCTObjectContext *privateContext;
+@property (atomic, strong, readonly, nullable) MCTObjectContext *mainContext;
+@property (atomic, strong, readonly, nullable) MCTObjectContext *privateContext;
 
 - (BOOL)isReady;
 
 + (instancetype)sharedStack;
 
-- (BOOL)prepareModelWithName:(NSString *)name bundle:(NSBundle *)bundle location:(NSURL *)location error:(NSError **)error;
+- (BOOL)prepareModelWithName:(NSString *)name bundle:(nullable NSBundle *)bundle location:(nullable NSURL *)location error:(NSError **)error;
 
 - (void)performInDisposable:(void(^)(NSManagedObjectContext *ctx))block;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif

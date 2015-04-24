@@ -34,15 +34,17 @@
 @import Foundation;
 @import CoreData;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface MCTManagedObject : NSManagedObject
 
 // MARK: - Order Cache
-- (NSArray *)cachedOrderedRelations:(NSString *)name sort:(NSArray *(^)(NSSet *))sort;
+- (nullable NSArray *)cachedOrderedRelations:(NSString *)name sort:(NSArray *(^)(NSSet *))sort;
 - (void)clearOrderCache;
 - (void)clearOrderCacheForName:(NSString *)name;
 
 // MARK: - Helpers
-+ (id)objectForNotification:(NSNotification *)notification context:(NSManagedObjectContext *)context error:(NSError **)error;
++ (nullable id)objectForNotification:(NSNotification *)notification context:(NSManagedObjectContext *)context error:(NSError **)error;
 
 @end
 
@@ -60,12 +62,14 @@
 - (void)destroy;
 
 // MARK: - Info
-+ (NSUInteger)countInContext:(NSManagedObjectContext *)context error:(NSError **)error;
-+ (NSUInteger)countInContext:(NSManagedObjectContext *)context predicate:(NSPredicate *)predicate error:(NSError **)error;
++ (NSUInteger)countInContext:(NSManagedObjectContext *)context error:(NSError * __nullable *)error;
++ (NSUInteger)countInContext:(NSManagedObjectContext *)context predicate:(nullable NSPredicate *)predicate error:(NSError * __nullable *)error;
 
 @end
 
 COREDATA_EXTERN NSString *const MCTManagedObjectDidSaveChangesNotification;
 COREDATA_EXTERN NSString *const MCTManagedObjectDidDeleteNotification;
+
+NS_ASSUME_NONNULL_END
 
 #endif

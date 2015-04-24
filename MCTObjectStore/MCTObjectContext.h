@@ -34,6 +34,8 @@
 @import Foundation;
 @import CoreData;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #if TARGET_OS_IPHONE
 @import UIKit;
 #endif
@@ -48,7 +50,7 @@
 /**
  *  The backing context.
  */
-@property (atomic, strong, readonly) NSManagedObjectContext *context;
+@property (atomic, strong, readonly, nullable) NSManagedObjectContext *context;
 
 /**
  *  The context is ready to read/write
@@ -88,16 +90,16 @@
 - (BOOL)save:(NSError **)error;
 
 // MARK: - Prepare
-- (BOOL)prepareWithModelName:(NSString *)modelName bundle:(NSBundle *)bundle storeURL:(NSURL *)URL;
-- (BOOL)prepareWithModel:(NSManagedObjectModel *)model storeURL:(NSURL *)URL;
-- (BOOL)prepareWithModel:(NSManagedObjectModel *)model storeURL:(NSURL *)URL persistentStoreType:(NSString *)storeType;
-- (BOOL)prepareWithModel:(NSManagedObjectModel *)model storeURL:(NSURL *)URL persistentStoreType:(NSString *)storeType contextType:(NSManagedObjectContextConcurrencyType)contextType error:(NSError **)error;
+- (BOOL)prepareWithModelName:(NSString *)modelName bundle:(nullable NSBundle *)bundle storeURL:(nullable NSURL *)URL;
+- (BOOL)prepareWithModel:(NSManagedObjectModel *)model storeURL:(nullable NSURL *)URL;
+- (BOOL)prepareWithModel:(NSManagedObjectModel *)model storeURL:(nullable NSURL *)URL persistentStoreType:(nullable NSString *)storeType;
+- (BOOL)prepareWithModel:(NSManagedObjectModel *)model storeURL:(nullable NSURL *)URL persistentStoreType:(nullable NSString *)storeType contextType:(NSManagedObjectContextConcurrencyType)contextType error:(NSError **)error;
 
 - (BOOL)prepareWithPersistentStoreCoordinator:(NSPersistentStoreCoordinator *)coordinator contextType:(NSManagedObjectContextConcurrencyType)contextType error:(NSError **)error;
 
-+ (NSManagedObjectModel *)modelWithName:(NSString *)name bundle:(NSBundle *)bundle;
++ (nullable NSManagedObjectModel *)modelWithName:(NSString *)name bundle:(nullable NSBundle *)bundle;
 
-- (instancetype)newObjectContextWithType:(NSManagedObjectContextConcurrencyType)contextType error:(NSError **)error;
+- (nullable instancetype)newObjectContextWithType:(NSManagedObjectContextConcurrencyType)contextType error:(NSError **)error;
 
 // MARK: - Meta
 - (BOOL)isMainThreadContext;
@@ -109,12 +111,14 @@
 - (id)insertNewObject:(Class)type;
 
 - (NSArray *)all:(Class)type;
-- (NSArray *)all:(Class)type predicate:(NSPredicate *)predicate;
-- (NSArray *)all:(Class)type predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sort;
-- (NSArray *)all:(Class)type predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sort error:(NSError **)error;
+- (NSArray *)all:(Class)type predicate:(nullable NSPredicate *)predicate;
+- (NSArray *)all:(Class)type predicate:(nullable NSPredicate *)predicate sortDescriptors:(nullable NSArray *)sort;
+- (NSArray *)all:(Class)type predicate:(nullable NSPredicate *)predicate sortDescriptors:(nullable NSArray *)sort error:(NSError **)error;
 
 - (NSArray *)all:(Class)type where:(NSString *)fmt, ... NS_FORMAT_FUNCTION(2, 3);
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif
