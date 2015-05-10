@@ -96,5 +96,16 @@
 - (void)performInDisposable:(void(^)(NSManagedObjectContext *ctx))block {
     [self.mainContext performInDisposable:block];
 }
+- (void)performInMainContext:(void (^)(NSManagedObjectContext *))block {
+    [self.mainContext performInContext:block];
+}
+
+// MARK: - Save
+- (BOOL)save:(NSError **)error {
+    if (![self.privateContext save:error]) {
+        return NO;
+    }
+    return [self.mainContext save:error];
+}
 
 @end

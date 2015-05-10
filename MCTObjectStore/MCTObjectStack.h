@@ -51,6 +51,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)prepareModelWithName:(NSString *)name bundle:(nullable NSBundle *)bundle location:(nullable NSURL *)location error:(NSError **)error;
 
 - (void)performInDisposable:(void(^)(NSManagedObjectContext *ctx))block;
+- (void)performInMainContext:(void(^)(NSManagedObjectContext *ctx))block;
+
+- (BOOL)save:(NSError **)error;
 
 @end
 
