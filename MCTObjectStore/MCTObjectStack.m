@@ -76,6 +76,9 @@
         return NO;
     }
 
+    return [self prepareWithModel:model location:location error:error];
+}
+- (BOOL)prepareWithModel:(NSManagedObjectModel *)model location:(NSURL *)location error:(NSError **)error {
     MCTObjectContext *main = [[MCTObjectContext alloc] init];
     if (![main prepareWithModel:model storeURL:location persistentStoreType:nil contextType:NSMainQueueConcurrencyType error:error]) {
         return NO;

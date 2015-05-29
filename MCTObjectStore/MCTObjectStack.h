@@ -49,6 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)sharedStack;
 
 - (BOOL)prepareModelWithName:(NSString *)name bundle:(nullable NSBundle *)bundle location:(nullable NSURL *)location error:(NSError **)error;
+- (BOOL)prepareWithModel:(NSManagedObjectModel *)model location:(NSURL *)location error:(NSError **)error;
 
 - (void)performInDisposable:(void(^)(NSManagedObjectContext *ctx))block;
 - (void)performInMainContext:(void(^)(NSManagedObjectContext *ctx))block;
