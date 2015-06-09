@@ -119,6 +119,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface NSManagedObjectContext (MCTObjectStoreAdditions)
+
+- (BOOL)saveIfNeeded;
+
+@end
+
 NS_ASSUME_NONNULL_END
 
 #endif
