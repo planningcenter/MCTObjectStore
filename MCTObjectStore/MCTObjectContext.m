@@ -303,6 +303,23 @@
 
 @end
 
+
+@implementation NSManagedObjectContext (MCTObjectStoreAdditions)
+
+- (BOOL)saveIfNeeded {
+    if (![self hasChanges]) {
+        return YES;
+    }
+    NSError *error = nil;
+    if (![self save:&error]) {
+        MCTOSLog(@"Failed to save context %@ with error %@",self,error);
+        return NO;
+    }
+    return YES;
+}
+
+@end
+
 NSUInteger const MCTObjectStoreCurrentVersion = MCTObjectStoreVersion_1_0_0;
 NSString * const MCTObjectStoreErrorDomain = @"MCTObjectStoreErrorDomain";
 NSString * const MCTObjectStoreGenericException = @"MCTObjectStoreGenericException";
