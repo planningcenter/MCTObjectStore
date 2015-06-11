@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7097255EA41532D7B40DE671168A642A4A91EA66",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "83F12094C11BCB2E6D3428EE0CAACCE02582324B" : 0,
+    "7097255EA41532D7B40DE671168A642A4A91EA66" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4DAC8A29-A1CF-464B-965E-627ED736E7DD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "83F12094C11BCB2E6D3428EE0CAACCE02582324B" : "..\/..",
+    "7097255EA41532D7B40DE671168A642A4A91EA66" : "MCTObjectStore"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MCTObjectStore",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MCTObjectStore.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/planningcenter\/MCTObjectStore.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7097255EA41532D7B40DE671168A642A4A91EA66"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ministrycentered\/PCOCocoa.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "83F12094C11BCB2E6D3428EE0CAACCE02582324B"
+    }
+  ]
+}
