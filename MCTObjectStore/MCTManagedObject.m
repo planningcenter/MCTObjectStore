@@ -27,18 +27,29 @@
  *   @email skylar@pco.bz
  *
  */
+#import <libkern/OSAtomic.h>
 
 #import "MCTManagedObject.h"
 #import "MCTObjectStoreError.h"
 
-@interface MCTManagedObject ()
+@interface MCTManagedObject () {
+    OSSpinLock volatile _spinLock;
+}
 
-@property (atomic, strong) NSMutableDictionary *orderCache;
+@property (atomic, strong) NSCache *orderCache;
 
 @end
 
 @implementation MCTManagedObject
 @synthesize orderCache = _orderCache;
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _spinLock = OS_SPINLOCK_INIT;
+    }
+    return self;
+}
 
 // MARK: - Changes
 - (void)didChangeValueForKey:(NSString *)inKey withSetMutation:(NSKeyValueSetMutationKind)inMutationKind usingObjects:(NSSet *)inObjects {
@@ -48,36 +59,36 @@
 
 // MARK: - Order Cache
 - (NSArray *)cachedOrderedRelations:(NSString *)name sort:(NSArray *(^)(NSSet *))sort {
-    @synchronized([self class]) {
-        NSMutableDictionary *table = self.orderCache;
-        if (!table) {
-            table = [NSMutableDictionary dictionaryWithCapacity:5];
-            self.orderCache = table;
-        }
-
-        NSArray *rel = [table objectForKey:name];
-        if (rel) {
-            return rel;
-        }
-
-        NSSet *set = [self valueForKey:name];
-        rel = sort(set);
-        if (rel) {
-            [table setObject:rel forKey:name];
-        }
-
-        return rel;
+    NSCache *cache = nil;
+    OSSpinLockLock(&_spinLock);
+    cache = self.orderCache;
+    if (!cache) {
+        cache = [[NSCache alloc] init];
+        self.orderCache = cache;
     }
+    OSSpinLockUnlock(&_spinLock);
+
+    NSArray *relation = [cache objectForKey:name];
+    if (relation) {
+        return relation;
+    }
+
+    NSSet *set = [self valueForKey:name];
+    relation = sort(set);
+
+    if (relation) {
+        [cache setObject:relation forKey:name];
+    }
+
+    return relation;
 }
 - (void)clearOrderCache {
-    @synchronized([self class]) {
-        self.orderCache = nil;
-    }
+    OSSpinLockLock(&_spinLock);
+    self.orderCache = nil;
+    OSSpinLockUnlock(&_spinLock);
 }
 - (void)clearOrderCacheForName:(NSString *)name {
-    @synchronized([self class]) {
-        [self.orderCache removeObjectForKey:name];
-    }
+    [self.orderCache removeObjectForKey:name];
 }
 
 // MARK: - Callbacks
