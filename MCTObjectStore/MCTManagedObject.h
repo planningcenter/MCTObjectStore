@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MCTManagedObject : NSManagedObject
 
 // MARK: - Order Cache
-- (nullable NSArray *)cachedOrderedRelations:(NSString *)name sort:(NSArray *(^)(NSSet *))sort;
+- (nullable NSArray<__kindof NSManagedObject *> *)cachedOrderedRelations:(NSString *)name sort:(NSArray<__kindof NSManagedObject *> *(^)(NSSet<__kindof NSManagedObject *> *))sort;
 - (void)clearOrderCache;
 - (void)clearOrderCacheForName:(NSString *)name;
 
@@ -66,9 +66,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSUInteger)countInContext:(NSManagedObjectContext *)context predicate:(nullable NSPredicate *)predicate error:(NSError * __nullable *)error;
 
 @end
-
-COREDATA_EXTERN NSString *const MCTManagedObjectDidSaveChangesNotification;
-COREDATA_EXTERN NSString *const MCTManagedObjectDidDeleteNotification;
 
 NS_ASSUME_NONNULL_END
 

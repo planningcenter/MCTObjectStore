@@ -33,15 +33,16 @@
 
 @import Foundation;
 @import CoreData;
-
-NS_ASSUME_NONNULL_BEGIN
-
 #if TARGET_OS_IPHONE
 @import UIKit;
 #endif
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  Object that wraps a CoreData NSManagedObjectContext
+ *
+ *  Merging from other contexts is handled for you by this object.
  */
 @interface MCTObjectContext : NSObject
 
@@ -90,7 +91,17 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)save:(NSError **)error;
 
 // MARK: - Prepare
+/**
+ *  Prepare the context with a model file with the passed name
+ *
+ *  @param modelName The name of the model file
+ *  @param bundle The bundle to find the model in.  If nil is passed the main app bundle is used.
+ *  @param URL Where the store should be created.  If nil is passed an in-memory store will be created.
+ *
+ *  @return Success or failure
+ */
 - (BOOL)prepareWithModelName:(NSString *)modelName bundle:(nullable NSBundle *)bundle storeURL:(nullable NSURL *)URL;
+
 - (BOOL)prepareWithModel:(NSManagedObjectModel *)model storeURL:(nullable NSURL *)URL;
 - (BOOL)prepareWithModel:(NSManagedObjectModel *)model storeURL:(nullable NSURL *)URL persistentStoreType:(nullable NSString *)storeType;
 - (BOOL)prepareWithModel:(NSManagedObjectModel *)model storeURL:(nullable NSURL *)URL persistentStoreType:(nullable NSString *)storeType contextType:(NSManagedObjectContextConcurrencyType)contextType error:(NSError **)error;
@@ -102,6 +113,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable instancetype)newObjectContextWithType:(NSManagedObjectContextConcurrencyType)contextType error:(NSError **)error;
 
 // MARK: - Meta
+/**
+ *  Check if the context is NSMainQueueConcurrencyType.
+ *
+ *  If the context is not ready NO will be returned
+ */
 - (BOOL)isMainThreadContext;
 
 @end
@@ -121,7 +137,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSManagedObjectContext (MCTObjectStoreAdditions)
 
-- (BOOL)saveIfNeeded;
+- (BOOL)saveIfNeeded DEPRECATED_MSG_ATTRIBUTE("See saveIfNeeded: instead");
+- (BOOL)saveIfNeeded:(NSError **)error;
 
 @end
 

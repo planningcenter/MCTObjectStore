@@ -254,6 +254,9 @@
 
 // MARK: - Meta
 - (BOOL)isMainThreadContext {
+    if (![self isReady]) {
+        return NO;
+    }
     return (self.context.concurrencyType == NSMainQueueConcurrencyType);
 }
 
@@ -307,12 +310,18 @@
 @implementation NSManagedObjectContext (MCTObjectStoreAdditions)
 
 - (BOOL)saveIfNeeded {
+    return [self saveIfNeeded:NULL];
+}
+- (BOOL)saveIfNeeded:(NSError **)error {
     if (![self hasChanges]) {
         return YES;
     }
-    NSError *error = nil;
-    if (![self save:&error]) {
-        MCTOSLog(@"Failed to save context %@ with error %@",self,error);
+    NSError *err = nil;
+    if (![self save:&err]) {
+        MCTOSLog(@"Failed to save context %@ with error %@",self,err);
+        if (error != NULL) {
+            *error = err;
+        }
         return NO;
     }
     return YES;
