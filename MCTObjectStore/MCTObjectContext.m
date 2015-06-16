@@ -33,6 +33,7 @@
 #import "MCTObjectStoreLog.h"
 #import "MCTObjectStoreError.h"
 #import "MCTObjectStoreHelpers.h"
+#import "MCTManagedObject.h"
 
 #define CHECK_TYPE_EXE(x_type) if (![type isSubclassOfClass:[NSManagedObject class]]) { \
 @throw [NSException exceptionWithName:MCTObjectStoreGenericException \
@@ -269,8 +270,7 @@
 
     id __block obj = nil;
     [self performInContext:^(NSManagedObjectContext *ctx) {
-        NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([type class]) inManagedObjectContext:ctx];
-        obj = [[type alloc] initWithEntity:entity insertIntoManagedObjectContext:ctx];
+        obj = [type insertIntoContext:ctx];
     }];
     return obj;
 }
