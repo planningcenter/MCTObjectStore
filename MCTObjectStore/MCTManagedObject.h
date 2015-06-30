@@ -57,6 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSEntityDescription *)entityInContext:(NSManagedObjectContext *)context;
 
 + (instancetype)insertIntoContext:(NSManagedObjectContext *)context;
++ (instancetype)insertIntoContext:(NSManagedObjectContext *)context values:(nullable NSDictionary<NSString *, id> *)values;
 
 // MARK: - Deleting
 - (void)destroy;

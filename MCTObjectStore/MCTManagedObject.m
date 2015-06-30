@@ -127,7 +127,14 @@
     return [NSEntityDescription entityForName:[self entityName] inManagedObjectContext:context];
 }
 + (instancetype)insertIntoContext:(NSManagedObjectContext *)context {
-    return [[self alloc] initWithEntity:[self entityInContext:context] insertIntoManagedObjectContext:context];
+    return [self insertIntoContext:context values:nil];
+}
++ (instancetype)insertIntoContext:(NSManagedObjectContext *)context values:(nullable NSDictionary *)values {
+    NSManagedObject *object = [[self alloc] initWithEntity:[self entityInContext:context] insertIntoManagedObjectContext:context];
+    if (values.count > 0) {
+        [object setValuesForKeysWithDictionary:values];
+    }
+    return object;
 }
 
 // MARK: - Delete
