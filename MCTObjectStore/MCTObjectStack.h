@@ -56,6 +56,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)save:(NSError **)error;
 
+/**
+ *  Destroy the store and reset the stack.
+ */
+- (BOOL)destroyStoreAtLocation:(NSURL *)location type:(NSString *)type error:(NSError **)error NS_AVAILABLE(10_11, 9_0);
+
 @end
 
 NS_ASSUME_NONNULL_END

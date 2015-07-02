@@ -194,10 +194,7 @@
         }
     }
     NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
-    NSDictionary *options = @{
-                              NSMigratePersistentStoresAutomaticallyOption: @YES,
-                              NSInferMappingModelAutomaticallyOption: @YES
-                              };
+    NSDictionary *options = [self.class defaultPersistentStoreOptions];
 
     if (![psc addPersistentStoreWithType:storeType configuration:nil URL:URL options:options error:error]) {
         return NO;
@@ -222,6 +219,13 @@
                                                object:nil];
 
     return YES;
+}
+
++ (NSDictionary *)defaultPersistentStoreOptions {
+    return @{
+             NSMigratePersistentStoresAutomaticallyOption: @YES,
+             NSInferMappingModelAutomaticallyOption: @YES
+             };
 }
 
 + (NSManagedObjectModel *)modelWithName:(NSString *)name bundle:(NSBundle *)bundle {

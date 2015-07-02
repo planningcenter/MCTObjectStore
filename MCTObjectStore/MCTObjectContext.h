@@ -120,6 +120,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)isMainThreadContext;
 
++ (NSDictionary *)defaultPersistentStoreOptions;
+
 @end
 
 @interface MCTObjectContext (ConvenienceMethods)
