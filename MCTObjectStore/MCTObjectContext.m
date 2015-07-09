@@ -208,6 +208,10 @@
     NSManagedObjectContext *ctx = [[NSManagedObjectContext alloc] initWithConcurrencyType:contextType];
     ctx.persistentStoreCoordinator = coordinator;
     ctx.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy;
+    ctx.retainsRegisteredObjects = (contextType == NSMainQueueConcurrencyType);
+    if ([ctx respondsToSelector:@selector(setShouldDeleteInaccessibleFaults:)]) {
+        [ctx setShouldDeleteInaccessibleFaults:YES];
+    }
 
     self.context = ctx;
 
