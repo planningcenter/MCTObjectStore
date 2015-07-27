@@ -196,7 +196,17 @@
     NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
     NSDictionary *options = [self.class defaultPersistentStoreOptions];
 
-    if (![psc addPersistentStoreWithType:storeType configuration:nil URL:URL options:options error:error]) {
+    BOOL success = NO;
+
+    @try {
+        success = [psc addPersistentStoreWithType:storeType configuration:nil URL:URL options:options error:error];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Failed to add store.  Exception caught!");
+        NSLog(@"%@",exception);
+    }
+
+    if (!success) {
         return NO;
     }
 
