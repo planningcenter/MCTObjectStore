@@ -110,6 +110,7 @@
     }
     return [self.mainContext save:error];
 }
+
 - (BOOL)destroyStoreAtLocation:(NSURL *)location type:(NSString *)type error:(NSError **)error {
     NSPersistentStoreCoordinator *psc = self.mainContext.context.persistentStoreCoordinator;
     if (!psc) {
@@ -118,10 +119,14 @@
     if (![psc destroyPersistentStoreAtURL:location withType:type options:[MCTObjectContext defaultPersistentStoreOptions] error:error]) {
         return NO;
     }
+    return [self hardResetCoreDataStack:error];
+}
+- (BOOL)hardResetCoreDataStack:(NSError **)error {
+    [self.mainContext.context reset];
+    [self.privateContext.context reset];
     self.mainContext = nil;
     self.privateContext = nil;
     return YES;
 }
-
 
 @end

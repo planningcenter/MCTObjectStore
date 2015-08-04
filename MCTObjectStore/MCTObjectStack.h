@@ -61,6 +61,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)destroyStoreAtLocation:(NSURL *)location type:(NSString *)type error:(NSError **)error NS_AVAILABLE(10_11, 9_0);
 
+- (BOOL)hardResetCoreDataStack:(NSError **)error;
+
 @end
 
 NS_ASSUME_NONNULL_END
