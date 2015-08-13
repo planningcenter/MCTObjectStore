@@ -199,7 +199,8 @@
     BOOL success = NO;
 
     @try {
-        success = [psc addPersistentStoreWithType:storeType configuration:nil URL:URL options:options error:error];
+        NSPersistentStore *store = [psc addPersistentStoreWithType:storeType configuration:nil URL:URL options:options error:error];
+        success = (store != nil);
     }
     @catch (NSException *exception) {
         NSLog(@"Failed to add store.  Exception caught!");
