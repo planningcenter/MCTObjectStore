@@ -36,7 +36,7 @@
 
 @interface MCTObjectStack ()
 
-@property (atomic, strong, readwrite) MCTObjectContext *mainContext;
+@property (atomic, strong, readwrite) MCTObjectContext *mainObjectContext;
 @property (atomic, strong, readwrite) MCTObjectContext *privateContext;
 
 @property (atomic, strong, readonly) dispatch_queue_t queue;
@@ -63,7 +63,7 @@
 
 // MARK: - Values
 - (BOOL)isReady {
-    return ([self.mainContext isReady] && [self.privateContext isReady]);
+    return ([self.mainObjectContext isReady] && [self.privateContext isReady]);
 }
 
 // MARK: - Context
@@ -89,7 +89,7 @@
         return NO;
     }
 
-    self.mainContext = main;
+    self.mainObjectContext = main;
     self.privateContext = private;
 
     return YES;
@@ -97,10 +97,10 @@
 
 // MARK: - Helpers
 - (void)performInDisposable:(void(^)(NSManagedObjectContext *ctx))block {
-    [self.mainContext performInDisposable:block];
+    [self.mainObjectContext performInDisposable:block];
 }
 - (void)performInMainContext:(void (^)(NSManagedObjectContext *))block {
-    [self.mainContext performInContext:block];
+    [self.mainObjectContext performInContext:block];
 }
 
 // MARK: - Save
@@ -108,11 +108,11 @@
     if (![self.privateContext save:error]) {
         return NO;
     }
-    return [self.mainContext save:error];
+    return [self.mainObjectContext save:error];
 }
 
 - (BOOL)destroyStoreAtLocation:(NSURL *)location type:(NSString *)type error:(NSError **)error {
-    NSPersistentStoreCoordinator *psc = self.mainContext.context.persistentStoreCoordinator;
+    NSPersistentStoreCoordinator *psc = self.mainObjectContext.context.persistentStoreCoordinator;
     if (!psc) {
         return NO;
     }
@@ -122,9 +122,9 @@
     return [self hardResetCoreDataStack:error];
 }
 - (BOOL)hardResetCoreDataStack:(NSError **)error {
-    [self.mainContext.context reset];
+    [self.mainObjectContext.context reset];
     [self.privateContext.context reset];
-    self.mainContext = nil;
+    self.mainObjectContext = nil;
     self.privateContext = nil;
     return YES;
 }

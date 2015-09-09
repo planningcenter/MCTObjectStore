@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MCTObjectStack : NSObject
 
-@property (atomic, strong, readonly, nullable) MCTObjectContext *mainContext;
+@property (atomic, strong, readonly, nullable) MCTObjectContext *mainObjectContext;
 @property (atomic, strong, readonly, nullable) MCTObjectContext *privateContext;
 
 - (BOOL)isReady;
