@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // MARK: - Create
 + (NSString *)entityName;
-+ (NSString *)mctClassName;
++ (NSString *)classNameAsString;
 
 + (NSEntityDescription *)entityInContext:(NSManagedObjectContext *)context;
 
