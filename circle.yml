@@ -6,8 +6,8 @@ machine:
 test:
   override:
     - set -o pipefail &&
-      xctool
+      xcodebuild
         -project MCTObjectStore.xcodeproj
         -scheme MCTObjectStore
         -sdk iphonesimulator test
-      # | xcpretty -c
+      | xcpretty -c
