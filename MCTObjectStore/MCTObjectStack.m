@@ -37,7 +37,7 @@
 @interface MCTObjectStack ()
 
 @property (atomic, strong, readwrite) MCTObjectContext *mainObjectContext;
-@property (atomic, strong, readwrite) MCTObjectContext *privateContext;
+@property (atomic, strong, readwrite) MCTObjectContext *privateObjectContext;
 
 @property (atomic, strong, readonly) dispatch_queue_t queue;
 
@@ -63,7 +63,7 @@
 
 // MARK: - Values
 - (BOOL)isReady {
-    return ([self.mainObjectContext isReady] && [self.privateContext isReady]);
+    return ([self.mainObjectContext isReady] && [self.privateObjectContext isReady]);
 }
 
 // MARK: - Context
@@ -90,7 +90,7 @@
     }
 
     self.mainObjectContext = main;
-    self.privateContext = private;
+    self.privateObjectContext = private;
 
     return YES;
 }
@@ -105,7 +105,7 @@
 
 // MARK: - Save
 - (BOOL)save:(NSError **)error {
-    if (![self.privateContext save:error]) {
+    if (![self.privateObjectContext save:error]) {
         return NO;
     }
     return [self.mainObjectContext save:error];
@@ -123,9 +123,9 @@
 }
 - (BOOL)hardResetCoreDataStack:(NSError **)error {
     [self.mainObjectContext.context reset];
-    [self.privateContext.context reset];
+    [self.privateObjectContext.context reset];
     self.mainObjectContext = nil;
-    self.privateContext = nil;
+    self.privateObjectContext = nil;
     return YES;
 }
 
