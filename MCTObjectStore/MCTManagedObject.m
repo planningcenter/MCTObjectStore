@@ -43,8 +43,8 @@
 @implementation MCTManagedObject
 @synthesize orderCache = _orderCache;
 
-- (instancetype)init {
-    self = [super init];
+- (nonnull NSManagedObject *)initWithEntity:(nonnull NSEntityDescription *)entity insertIntoManagedObjectContext:(nullable NSManagedObjectContext *)context {
+    self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
     if (self) {
         _spinLock = OS_SPINLOCK_INIT;
     }
@@ -58,7 +58,7 @@
 }
 
 // MARK: - Order Cache
-- (NSArray *)cachedOrderedRelations:(NSString *)name sort:(NSArray *(^)(NSSet *))sort {
+- (nullable NSArray<__kindof NSManagedObject *> *)cachedOrderedRelations:(NSString *)name sort:(NSArray<__kindof NSManagedObject *> *(^)(NSSet<__kindof NSManagedObject *> *))sort {
     NSCache *cache = nil;
     OSSpinLockLock(&_spinLock);
     cache = self.orderCache;
@@ -91,37 +91,10 @@
     [self.orderCache removeObjectForKey:name];
 }
 
-// MARK: - Callbacks
-- (void)didSave {
-    if (![[self objectID] isTemporaryID]) {
-        if ([self hasChanges] && ![self isDeleted]) {
-            [self mct_sendDidSaveNotification];
-        } else if ([self isDeleted]) {
-            [self mct_sendDeletedNotification];
-        }
-    }
-    [super didSave];
-}
-- (void)mct_sendDidSaveNotification {
-    NSManagedObjectID *objectID = [self objectID];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:MCTManagedObjectDidSaveChangesNotification object:objectID];
-    });
-}
-- (void)mct_sendDeletedNotification {
-    NSManagedObjectID *objectID = [self objectID];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:MCTManagedObjectDidDeleteNotification object:objectID];
-    });
-}
-
 // MARK: - Helpers
 + (id)objectForNotification:(NSNotification *)notification context:(NSManagedObjectContext *)context error:(NSError **)error {
     NSParameterAssert(notification);
     NSParameterAssert(context);
-    if (![notification.name isEqualToString:MCTManagedObjectDidSaveChangesNotification]) {
-        @throw [NSException exceptionWithName:MCTObjectStoreGenericException reason:[NSString stringWithFormat:@"Can't get object with notification of type %@",notification.name] userInfo:nil];
-    }
     if (![notification.object isKindOfClass:[NSManagedObjectID class]]) {
         if (error != NULL) {
             *error = [NSError errorWithDomain:MCTObjectStoreErrorDomain
@@ -154,7 +127,14 @@
     return [NSEntityDescription entityForName:[self entityName] inManagedObjectContext:context];
 }
 + (instancetype)insertIntoContext:(NSManagedObjectContext *)context {
-    return [[self alloc] initWithEntity:[self entityInContext:context] insertIntoManagedObjectContext:context];
+    return [self insertIntoContext:context values:nil];
+}
++ (instancetype)insertIntoContext:(NSManagedObjectContext *)context values:(nullable NSDictionary *)values {
+    NSManagedObject *object = [[self alloc] initWithEntity:[self entityInContext:context] insertIntoManagedObjectContext:context];
+    if (values.count > 0) {
+        [object setValuesForKeysWithDictionary:values];
+    }
+    return object;
 }
 
 // MARK: - Delete
@@ -173,6 +153,3 @@
 }
 
 @end
-
-NSString *const MCTManagedObjectDidSaveChangesNotification = @"MCTManagedObjectDidSaveChangesNotification";
-NSString *const MCTManagedObjectDidDeleteNotification = @"MCTManagedObjectDidDeleteNotification";

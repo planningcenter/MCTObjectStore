@@ -92,14 +92,28 @@
     self.mainContext = main;
     self.privateContext = private;
 
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:MCTObjectStackDidBecomeReadyNotification object:self];
+    });
+
     return YES;
 }
 
 // MARK: - Helpers
 - (void)performInDisposable:(void(^)(NSManagedObjectContext *ctx))block {
+#if DEBUG
+    if (![self isReady]) {
+        NSLog(@"Trying to call %@ before ready.  Call %@ first!",NSStringFromSelector(_cmd),NSStringFromSelector(@selector(prepareWithModel:location:error:)));
+    }
+#endif
     [self.mainContext performInDisposable:block];
 }
 - (void)performInMainContext:(void (^)(NSManagedObjectContext *))block {
+#if DEBUG
+    if (![self isReady]) {
+        NSLog(@"Trying to call %@ before ready.  Call %@ first!",NSStringFromSelector(_cmd),NSStringFromSelector(@selector(prepareWithModel:location:error:)));
+    }
+#endif
     [self.mainContext performInContext:block];
 }
 
@@ -111,4 +125,24 @@
     return [self.mainContext save:error];
 }
 
+- (BOOL)destroyStoreAtLocation:(NSURL *)location type:(NSString *)type error:(NSError **)error {
+    NSPersistentStoreCoordinator *psc = self.mainContext.context.persistentStoreCoordinator;
+    if (!psc) {
+        return NO;
+    }
+    if (![psc destroyPersistentStoreAtURL:location withType:type options:[MCTObjectContext defaultPersistentStoreOptions] error:error]) {
+        return NO;
+    }
+    return [self hardResetCoreDataStack:error];
+}
+- (BOOL)hardResetCoreDataStack:(NSError **)error {
+    [self.mainContext.context reset];
+    [self.privateContext.context reset];
+    self.mainContext = nil;
+    self.privateContext = nil;
+    return YES;
+}
+
 @end
+
+NSString *const MCTObjectStackDidBecomeReadyNotification = @"MCTObjectStackDidBecomeReadyNotification";

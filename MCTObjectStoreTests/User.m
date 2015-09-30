@@ -14,4 +14,10 @@
 @dynamic firstName;
 @dynamic lastName;
 
+- (void)awakeFromInsert {
+    [super awakeFromInsert];
+
+    [self setValue:[[NSUUID UUID] UUIDString] forKey:@"localID"];
+}
+
 @end

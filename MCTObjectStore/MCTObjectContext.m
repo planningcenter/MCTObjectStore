@@ -33,6 +33,7 @@
 #import "MCTObjectStoreLog.h"
 #import "MCTObjectStoreError.h"
 #import "MCTObjectStoreHelpers.h"
+#import "MCTManagedObject.h"
 
 #define CHECK_TYPE_EXE(x_type) if (![type isSubclassOfClass:[NSManagedObject class]]) { \
 @throw [NSException exceptionWithName:MCTObjectStoreGenericException \
@@ -193,12 +194,20 @@
         }
     }
     NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
-    NSDictionary *options = @{
-                              NSMigratePersistentStoresAutomaticallyOption: @YES,
-                              NSInferMappingModelAutomaticallyOption: @YES
-                              };
+    NSDictionary *options = [self.class defaultPersistentStoreOptions];
 
-    if (![psc addPersistentStoreWithType:storeType configuration:nil URL:URL options:options error:error]) {
+    BOOL success = NO;
+
+    @try {
+        NSPersistentStore *store = [psc addPersistentStoreWithType:storeType configuration:nil URL:URL options:options error:error];
+        success = (store != nil);
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Failed to add store.  Exception caught!");
+        NSLog(@"%@",exception);
+    }
+
+    if (!success) {
         return NO;
     }
 
@@ -210,6 +219,10 @@
     NSManagedObjectContext *ctx = [[NSManagedObjectContext alloc] initWithConcurrencyType:contextType];
     ctx.persistentStoreCoordinator = coordinator;
     ctx.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy;
+    ctx.retainsRegisteredObjects = (contextType == NSMainQueueConcurrencyType);
+    if ([ctx respondsToSelector:@selector(setShouldDeleteInaccessibleFaults:)]) {
+        [ctx setShouldDeleteInaccessibleFaults:YES];
+    }
 
     self.context = ctx;
 
@@ -221,6 +234,13 @@
                                                object:nil];
 
     return YES;
+}
+
++ (NSDictionary *)defaultPersistentStoreOptions {
+    return @{
+             NSMigratePersistentStoresAutomaticallyOption: @YES,
+             NSInferMappingModelAutomaticallyOption: @YES
+             };
 }
 
 + (NSManagedObjectModel *)modelWithName:(NSString *)name bundle:(NSBundle *)bundle {
@@ -254,6 +274,9 @@
 
 // MARK: - Meta
 - (BOOL)isMainThreadContext {
+    if (![self isReady]) {
+        return NO;
+    }
     return (self.context.concurrencyType == NSMainQueueConcurrencyType);
 }
 
@@ -266,8 +289,7 @@
 
     id __block obj = nil;
     [self performInContext:^(NSManagedObjectContext *ctx) {
-        NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([type class]) inManagedObjectContext:ctx];
-        obj = [[type alloc] initWithEntity:entity insertIntoManagedObjectContext:ctx];
+        obj = [type insertIntoContext:ctx];
     }];
     return obj;
 }
@@ -307,12 +329,18 @@
 @implementation NSManagedObjectContext (MCTObjectStoreAdditions)
 
 - (BOOL)saveIfNeeded {
+    return [self saveIfNeeded:NULL];
+}
+- (BOOL)saveIfNeeded:(NSError **)error {
     if (![self hasChanges]) {
         return YES;
     }
-    NSError *error = nil;
-    if (![self save:&error]) {
-        MCTOSLog(@"Failed to save context %@ with error %@",self,error);
+    NSError *err = nil;
+    if (![self save:&err]) {
+        MCTOSLog(@"Failed to save context %@ with error %@",self,err);
+        if (error != NULL) {
+            *error = err;
+        }
         return NO;
     }
     return YES;

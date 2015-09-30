@@ -97,16 +97,5 @@
 
     XCTAssertTrue([self.store save:NULL]);
 }
-- (void)testThrowBadNotificationExceptions {
-    XCTAssertThrowsSpecificNamed([Person objectForNotification:[NSNotification notificationWithName:@"Junk" object:nil] context:self.store.context error:NULL], NSException, MCTObjectStoreGenericException);
-}
-- (void)testObjectForNotification {
-    Person *person = [self.store insertNewObject:[Person class]];
-    XCTAssertTrue([self.store save:NULL]);
-
-    Person *newPerson = [Person objectForNotification:[NSNotification notificationWithName:MCTManagedObjectDidSaveChangesNotification object:person.objectID] context:self.store.context error:NULL];
-
-    XCTAssertEqualObjects(person, newPerson);
-}
 
 @end

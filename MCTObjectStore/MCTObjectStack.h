@@ -49,14 +49,23 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)sharedStack;
 
 - (BOOL)prepareModelWithName:(NSString *)name bundle:(nullable NSBundle *)bundle location:(nullable NSURL *)location error:(NSError **)error;
-- (BOOL)prepareWithModel:(NSManagedObjectModel *)model location:(NSURL *)location error:(NSError **)error;
+- (BOOL)prepareWithModel:(NSManagedObjectModel *)model location:(nullable NSURL *)location error:(NSError **)error;
 
 - (void)performInDisposable:(void(^)(NSManagedObjectContext *ctx))block;
 - (void)performInMainContext:(void(^)(NSManagedObjectContext *ctx))block;
 
 - (BOOL)save:(NSError **)error;
 
+/**
+ *  Destroy the store and reset the stack.
+ */
+- (BOOL)destroyStoreAtLocation:(NSURL *)location type:(NSString *)type error:(NSError **)error NS_AVAILABLE(10_11, 9_0);
+
+- (BOOL)hardResetCoreDataStack:(NSError **)error;
+
 @end
+
+FOUNDATION_EXTERN NSString *const MCTObjectStackDidBecomeReadyNotification;
 
 NS_ASSUME_NONNULL_END
 
