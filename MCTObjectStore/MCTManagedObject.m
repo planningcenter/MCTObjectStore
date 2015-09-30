@@ -118,9 +118,9 @@
 @implementation NSManagedObject (MCTManagedObjectHelpers)
 
 + (NSString *)entityName {
-    return [self className];
+    return [self classNameAsString];
 }
-+ (NSString *)className {
++ (NSString *)classNameAsString {
     return NSStringFromClass(self);
 }
 + (NSEntityDescription *)entityInContext:(NSManagedObjectContext *)context {

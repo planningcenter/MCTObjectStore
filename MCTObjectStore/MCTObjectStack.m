@@ -36,8 +36,8 @@
 
 @interface MCTObjectStack ()
 
-@property (atomic, strong, readwrite) MCTObjectContext *mainContext;
-@property (atomic, strong, readwrite) MCTObjectContext *privateContext;
+@property (atomic, strong, readwrite) MCTObjectContext *mainObjectContext;
+@property (atomic, strong, readwrite) MCTObjectContext *privateObjectContext;
 
 @property (atomic, strong, readonly) dispatch_queue_t queue;
 
@@ -63,7 +63,7 @@
 
 // MARK: - Values
 - (BOOL)isReady {
-    return ([self.mainContext isReady] && [self.privateContext isReady]);
+    return ([self.mainObjectContext isReady] && [self.privateObjectContext isReady]);
 }
 
 // MARK: - Context
@@ -89,8 +89,8 @@
         return NO;
     }
 
-    self.mainContext = main;
-    self.privateContext = private;
+    self.mainObjectContext = main;
+    self.privateObjectContext = private;
 
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:MCTObjectStackDidBecomeReadyNotification object:self];
@@ -106,7 +106,7 @@
         NSLog(@"Trying to call %@ before ready.  Call %@ first!",NSStringFromSelector(_cmd),NSStringFromSelector(@selector(prepareWithModel:location:error:)));
     }
 #endif
-    [self.mainContext performInDisposable:block];
+    [self.mainObjectContext performInDisposable:block];
 }
 - (void)performInMainContext:(void (^)(NSManagedObjectContext *))block {
 #if DEBUG
@@ -114,19 +114,19 @@
         NSLog(@"Trying to call %@ before ready.  Call %@ first!",NSStringFromSelector(_cmd),NSStringFromSelector(@selector(prepareWithModel:location:error:)));
     }
 #endif
-    [self.mainContext performInContext:block];
+    [self.mainObjectContext performInContext:block];
 }
 
 // MARK: - Save
 - (BOOL)save:(NSError **)error {
-    if (![self.privateContext save:error]) {
+    if (![self.privateObjectContext save:error]) {
         return NO;
     }
-    return [self.mainContext save:error];
+    return [self.mainObjectContext save:error];
 }
 
 - (BOOL)destroyStoreAtLocation:(NSURL *)location type:(NSString *)type error:(NSError **)error {
-    NSPersistentStoreCoordinator *psc = self.mainContext.context.persistentStoreCoordinator;
+    NSPersistentStoreCoordinator *psc = self.mainObjectContext.context.persistentStoreCoordinator;
     if (!psc) {
         return NO;
     }
@@ -136,10 +136,10 @@
     return [self hardResetCoreDataStack:error];
 }
 - (BOOL)hardResetCoreDataStack:(NSError **)error {
-    [self.mainContext.context reset];
-    [self.privateContext.context reset];
-    self.mainContext = nil;
-    self.privateContext = nil;
+    [self.mainObjectContext.context reset];
+    [self.privateObjectContext.context reset];
+    self.mainObjectContext = nil;
+    self.privateObjectContext = nil;
     return YES;
 }
 
