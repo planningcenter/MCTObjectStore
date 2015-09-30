@@ -10,4 +10,4 @@ test:
         -project MCTObjectStore.xcodeproj
         -scheme MCTObjectStore
         -sdk iphonesimulator test
-      | xcpretty -c
+      # | xcpretty -c
