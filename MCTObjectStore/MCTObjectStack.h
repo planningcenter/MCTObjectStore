@@ -65,6 +65,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+FOUNDATION_EXTERN NSString *const MCTObjectStackDidBecomeReadyNotification;
+
 NS_ASSUME_NONNULL_END
 
 #endif

@@ -92,14 +92,28 @@
     self.mainObjectContext = main;
     self.privateObjectContext = private;
 
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:MCTObjectStackDidBecomeReadyNotification object:self];
+    });
+
     return YES;
 }
 
 // MARK: - Helpers
 - (void)performInDisposable:(void(^)(NSManagedObjectContext *ctx))block {
+#if DEBUG
+    if (![self isReady]) {
+        NSLog(@"Trying to call %@ before ready.  Call %@ first!",NSStringFromSelector(_cmd),NSStringFromSelector(@selector(prepareWithModel:location:error:)));
+    }
+#endif
     [self.mainObjectContext performInDisposable:block];
 }
 - (void)performInMainContext:(void (^)(NSManagedObjectContext *))block {
+#if DEBUG
+    if (![self isReady]) {
+        NSLog(@"Trying to call %@ before ready.  Call %@ first!",NSStringFromSelector(_cmd),NSStringFromSelector(@selector(prepareWithModel:location:error:)));
+    }
+#endif
     [self.mainObjectContext performInContext:block];
 }
 
@@ -130,3 +144,5 @@
 }
 
 @end
+
+NSString *const MCTObjectStackDidBecomeReadyNotification = @"MCTObjectStackDidBecomeReadyNotification";
