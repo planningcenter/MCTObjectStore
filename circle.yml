@@ -10,5 +10,7 @@ test:
         -project MCTObjectStore.xcodeproj
         -scheme MCTObjectStore
         -sdk iphonesimulator
+        -destination 'platform=iOS Simulator,name=iPhone 6'
+        clean
         test
       | xcpretty -c
