@@ -35,3 +35,6 @@
 #import <MCTObjectStore/MCTObjectStoreVersion.h>
 #import <MCTObjectStore/MCTObjectStoreLog.h>
 #import <MCTObjectStore/MCTObjectStoreError.h>
+
+#import <MCTObjectStore/NSPredicate+MCTObjectStore.h>
+#import <MCTObjectStore/NSFetchRequest+MCTObjectStore.h>

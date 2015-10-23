@@ -12,6 +12,10 @@
 		942F473E1A9188E500F74419 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F473D1A9188E500F74419 /* Person.m */; };
 		942F47411A9188E600F74419 /* PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47401A9188E600F74419 /* PhoneNumber.m */; };
 		942F47431A91895600F74419 /* MCTManagedObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F47421A91895600F74419 /* MCTManagedObjectTests.m */; };
+		94327C781BDAADF100F60A99 /* NSPredicate+MCTObjectStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 94327C761BDAADF100F60A99 /* NSPredicate+MCTObjectStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94327C791BDAADF100F60A99 /* NSPredicate+MCTObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 94327C771BDAADF100F60A99 /* NSPredicate+MCTObjectStore.m */; };
+		94327C7C1BDAB01100F60A99 /* NSFetchRequest+MCTObjectStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 94327C7A1BDAB01100F60A99 /* NSFetchRequest+MCTObjectStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94327C7D1BDAB01100F60A99 /* NSFetchRequest+MCTObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 94327C7B1BDAB01100F60A99 /* NSFetchRequest+MCTObjectStore.m */; };
 		94418F781A96D409005E9193 /* TestModel_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94418F761A96D409005E9193 /* TestModel_2.xcdatamodeld */; };
 		94418F7B1A96D42E005E9193 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 94418F7A1A96D42E005E9193 /* User.m */; };
 		94705B3F1AB9D89200DC9117 /* MCTObjectStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D8E2A51A9C4AD2004B6DAA /* MCTObjectStore.framework */; };
@@ -108,6 +112,10 @@
 		942F473F1A9188E600F74419 /* PhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumber.h; sourceTree = "<group>"; };
 		942F47401A9188E600F74419 /* PhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumber.m; sourceTree = "<group>"; };
 		942F47421A91895600F74419 /* MCTManagedObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCTManagedObjectTests.m; sourceTree = "<group>"; };
+		94327C761BDAADF100F60A99 /* NSPredicate+MCTObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPredicate+MCTObjectStore.h"; sourceTree = "<group>"; };
+		94327C771BDAADF100F60A99 /* NSPredicate+MCTObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPredicate+MCTObjectStore.m"; sourceTree = "<group>"; };
+		94327C7A1BDAB01100F60A99 /* NSFetchRequest+MCTObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFetchRequest+MCTObjectStore.h"; sourceTree = "<group>"; };
+		94327C7B1BDAB01100F60A99 /* NSFetchRequest+MCTObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFetchRequest+MCTObjectStore.m"; sourceTree = "<group>"; };
 		94418F771A96D409005E9193 /* TestModel_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel_2.xcdatamodel; sourceTree = "<group>"; };
 		94418F791A96D42E005E9193 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		94418F7A1A96D42E005E9193 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -209,6 +217,10 @@
 				942F47141A90197600F74419 /* MCTObjectContext.m */,
 				942F47241A90225100F74419 /* MCTManagedObject.h */,
 				942F47251A90225100F74419 /* MCTManagedObject.m */,
+				94327C761BDAADF100F60A99 /* NSPredicate+MCTObjectStore.h */,
+				94327C771BDAADF100F60A99 /* NSPredicate+MCTObjectStore.m */,
+				94327C7A1BDAB01100F60A99 /* NSFetchRequest+MCTObjectStore.h */,
+				94327C7B1BDAB01100F60A99 /* NSFetchRequest+MCTObjectStore.m */,
 			);
 			path = MCTObjectStore;
 			sourceTree = "<group>";
@@ -333,8 +345,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				94D8E2C11A9C4B27004B6DAA /* MCTObjectStore.h in Headers */,
+				94327C781BDAADF100F60A99 /* NSPredicate+MCTObjectStore.h in Headers */,
 				94D8E2C21A9C4B27004B6DAA /* MCTObjectStoreVersion.h in Headers */,
 				94D8E2C31A9C4B27004B6DAA /* MCTObjectStoreLog.h in Headers */,
+				94327C7C1BDAB01100F60A99 /* NSFetchRequest+MCTObjectStore.h in Headers */,
 				94D8E2C41A9C4B27004B6DAA /* MCTObjectStoreError.h in Headers */,
 				94D8E2C51A9C4B27004B6DAA /* MCTObjectStack.h in Headers */,
 				94D8E2C61A9C4B27004B6DAA /* MCTObjectContext.h in Headers */,
@@ -556,9 +570,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94327C791BDAADF100F60A99 /* NSPredicate+MCTObjectStore.m in Sources */,
 				94D8E2BE1A9C4B0D004B6DAA /* MCTObjectStack.m in Sources */,
 				94D8E2BF1A9C4B0D004B6DAA /* MCTObjectContext.m in Sources */,
 				94D8E2C01A9C4B0D004B6DAA /* MCTManagedObject.m in Sources */,
+				94327C7D1BDAB01100F60A99 /* NSFetchRequest+MCTObjectStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
