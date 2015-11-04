@@ -17,11 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSFetchRequest (MCTObjectStore)
 
-- (void)appendAndPredicateWithFormat:(NSString *)fmt, ... NS_FORMAT_FUNCTION(1, 2);
+- (void)appendAndPredicateWithFormat:(NSString *)fmt, ...;
 
 - (void)appendAndPredicate:(NSPredicate *)predicate;
 
-- (void)appendOrPredicateWithFormat:(NSString *)fmt, ... NS_FORMAT_FUNCTION(1, 2);
+- (void)appendOrPredicateWithFormat:(NSString *)fmt, ...;
 
 - (void)appendOrPredicate:(NSPredicate *)predicate;
 
