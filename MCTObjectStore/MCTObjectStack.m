@@ -117,6 +117,15 @@
     [self.mainObjectContext performInContext:block];
 }
 
+- (void)performInPrivateContext:(void(^)(NSManagedObjectContext *ctx))block {
+#if DEBUG
+    if (![self isReady]) {
+        NSLog(@"Trying to call %@ before ready.  Call %@ first!",NSStringFromSelector(_cmd),NSStringFromSelector(@selector(prepareWithModel:location:error:)));
+    }
+#endif
+    [self.privateObjectContext performInContext:block];
+}
+
 // MARK: - Save
 - (BOOL)save:(NSError **)error {
     if (![self.privateObjectContext save:error]) {

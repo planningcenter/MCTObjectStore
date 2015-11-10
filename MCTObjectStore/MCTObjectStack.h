@@ -53,6 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)performInDisposable:(void(^)(NSManagedObjectContext *ctx))block;
 - (void)performInMainContext:(void(^)(NSManagedObjectContext *ctx))block;
+- (void)performInPrivateContext:(void(^)(NSManagedObjectContext *ctx))block;
 
 - (BOOL)save:(NSError **)error;
 
