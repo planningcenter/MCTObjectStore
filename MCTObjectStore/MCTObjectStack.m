@@ -144,9 +144,14 @@
     }
     return [self hardResetCoreDataStack:error];
 }
+
 - (BOOL)hardResetCoreDataStack:(NSError **)error {
-    [self.mainObjectContext.context reset];
-    [self.privateObjectContext.context reset];
+    [self.mainObjectContext.context performBlockAndWait:^{
+        [self.mainObjectContext.context reset];
+    }];
+    [self.privateObjectContext.context performBlockAndWait:^{
+        [self.privateObjectContext.context reset];
+    }];
     self.mainObjectContext = nil;
     self.privateObjectContext = nil;
     return YES;
