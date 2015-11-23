@@ -81,6 +81,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)performInDisposable:(void(^)(NSManagedObjectContext *ctx))block;
 
+- (nullable id)performAndReturnInContext:(id _Nullable(^)(NSManagedObjectContext *ctx))block;
+
 /**
  *  Saves the backing context in the context's queue.
  *

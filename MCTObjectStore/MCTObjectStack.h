@@ -55,6 +55,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)performInMainContext:(void(^)(NSManagedObjectContext *ctx))block;
 - (void)performInPrivateContext:(void(^)(NSManagedObjectContext *ctx))block;
 
+- (nullable id)performAndReturnInMainContext:(id _Nullable(^)(NSManagedObjectContext *ctx))block;
+
 - (BOOL)save:(NSError **)error;
 
 /**

@@ -148,6 +148,18 @@
     }];
 }
 
+- (nullable id)performAndReturnInContext:(id _Nullable(^)(NSManagedObjectContext *ctx))block {
+    MCTOSParamAssert(block);
+
+    id __block object = nil;
+    NSManagedObjectContext *ctx = self.context;
+    [ctx performBlockAndWait:^{
+        object = block(ctx);
+    }];
+
+    return object;
+}
+
 // MARK: - Saving Contexts
 - (BOOL)save:(NSError **)error {
     BOOL __block success = YES;
