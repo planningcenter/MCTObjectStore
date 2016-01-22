@@ -16,10 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSPredicate (MCTObjectStore)
 
-- (__kindof NSPredicate *)andPredicateWithFormat:(NSString *)fmt, ... NS_FORMAT_FUNCTION(1, 2);
+- (__kindof NSPredicate *)andPredicateWithFormat:(NSString *)fmt, ...;
 - (__kindof NSPredicate *)andPredicate:(NSPredicate *)predicate;
 
-- (__kindof NSPredicate *)orPredicateWithFormat:(NSString *)fmt, ... NS_FORMAT_FUNCTION(1, 2);
+- (__kindof NSPredicate *)orPredicateWithFormat:(NSString *)fmt, ...;
 - (__kindof NSPredicate *)orPredicate:(NSPredicate *)predicate;
 
 @end
