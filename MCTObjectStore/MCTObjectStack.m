@@ -152,7 +152,13 @@
     if (![psc destroyPersistentStoreAtURL:location withType:type options:[MCTObjectContext defaultPersistentStoreOptions] error:error]) {
         return NO;
     }
-    return [self hardResetCoreDataStack:error];
+    if (![self hardResetCoreDataStack:error]) {
+        return NO;
+    }
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:MCTObjectStackDidDestroyStoreNotification object:self];
+
+    return YES;
 }
 
 - (BOOL)hardResetCoreDataStack:(NSError **)error {
@@ -170,3 +176,4 @@
 @end
 
 NSString *const MCTObjectStackDidBecomeReadyNotification = @"MCTObjectStackDidBecomeReadyNotification";
+NSString *const MCTObjectStackDidDestroyStoreNotification = @"MCTObjectStackDidDestroyStoreNotification";
