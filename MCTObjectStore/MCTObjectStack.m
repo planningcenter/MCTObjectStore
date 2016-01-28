@@ -136,6 +136,16 @@
     return [self.mainObjectContext performAndReturnInContext:block];
 }
 
+- (nullable id)performAndReturnInPrivateContext:(id _Nullable(^)(NSManagedObjectContext *ctx))block {
+#if DEBUG
+    if (![self isReady]) {
+        NSLog(@"Trying to call %@ before ready.  Call %@ first!",NSStringFromSelector(_cmd),NSStringFromSelector(@selector(prepareWithModel:location:error:)));
+        return nil;
+    }
+#endif
+    return [self.privateObjectContext performAndReturnInContext:block];
+}
+
 // MARK: - Save
 - (BOOL)save:(NSError **)error {
     if (![self.privateObjectContext save:error]) {
