@@ -92,6 +92,18 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)save:(NSError **)error;
 
+/**
+ *  Handle a save error in the passed context.
+ *
+ *  By default this will handle `NSManagedObjectMergeError` by using the `ObjectTrumpMergePolicyType`
+ *
+ *  @param error The error that occurred
+ *  @param ctx   The context that failed to save
+ *
+ *  @return A BOOL indicating if the merge succeeded & the context was saved.
+ */
+- (BOOL)handleSaveError:(NSError *)error inContext:(NSManagedObjectContext *)ctx;
+
 // MARK: - Prepare
 /**
  *  Prepare the context with a model file with the passed name

@@ -142,20 +142,27 @@
         if ([ctx hasChanges]) {
             MCTOSLog(@"Saving disposable context");
             if (![ctx save:&error]) {
-                if ([error.domain isEqualToString:NSCocoaErrorDomain]) {
-                    if (error.code == NSManagedObjectMergeError) {
-                        if ([self handleMergeError:error inContent:ctx]) {
-                            if (![ctx save:&error]) {
-                                MCTOSLog(@"Failed to save context: %@",error);
-                            }
-                        }
-                        return;
-                    }
-                }
-                MCTOSLog(@"Failed to save context: %@",error);
+                [self handleSaveError:error inContext:ctx];
             }
         }
     }];
+}
+
+- (BOOL)handleSaveError:(NSError *)error inContext:(NSManagedObjectContext *)ctx {
+    if ([error.domain isEqualToString:NSCocoaErrorDomain]) {
+        if (error.code == NSManagedObjectMergeError) {
+            if ([self handleMergeError:error inContent:ctx]) {
+                if (![ctx save:&error]) {
+                    MCTOSLog(@"Failed to save context: %@",error);
+                    return NO;
+                }
+                return YES;
+            }
+            return NO;
+        }
+    }
+    MCTOSLog(@"Failed to save context: %@",error);
+    return NO;
 }
 
 - (nullable id)performAndReturnInContext:(id _Nullable(^)(NSManagedObjectContext *ctx))block {
