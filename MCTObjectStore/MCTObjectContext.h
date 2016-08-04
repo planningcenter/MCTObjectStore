@@ -102,7 +102,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return A BOOL indicating if the merge succeeded & the context was saved.
  */
-- (BOOL)handleSaveError:(NSError *)error inContext:(NSManagedObjectContext *)ctx;
++ (BOOL)handleSaveError:(NSError *)error inContext:(NSManagedObjectContext *)ctx;
 
 // MARK: - Prepare
 /**

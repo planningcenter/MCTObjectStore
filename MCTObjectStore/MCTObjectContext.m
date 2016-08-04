@@ -142,13 +142,13 @@
         if ([ctx hasChanges]) {
             MCTOSLog(@"Saving disposable context");
             if (![ctx save:&error]) {
-                [self handleSaveError:error inContext:ctx];
+                [self.class handleSaveError:error inContext:ctx];
             }
         }
     }];
 }
 
-- (BOOL)handleSaveError:(NSError *)error inContext:(NSManagedObjectContext *)ctx {
++ (BOOL)handleSaveError:(NSError *)error inContext:(NSManagedObjectContext *)ctx {
     if ([error.domain isEqualToString:NSCocoaErrorDomain]) {
         if (error.code == NSManagedObjectMergeError) {
             if ([self handleMergeError:error inContent:ctx]) {
@@ -177,7 +177,7 @@
     return object;
 }
 
-- (BOOL)handleMergeError:(NSError *)error inContent:(NSManagedObjectContext *)ctx {
++ (BOOL)handleMergeError:(NSError *)error inContent:(NSManagedObjectContext *)ctx {
     NSArray *conflicts = [error.userInfo objectForKey:@"conflictList"];
     if (conflicts.count == 0) {
         MCTOSLog(@"Expected to handle merge error.  Found 0 conflicts. %@",error);
