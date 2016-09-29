@@ -159,10 +159,10 @@
     if (!psc) {
         return NO;
     }
-    if (![psc destroyPersistentStoreAtURL:location withType:type options:[MCTObjectContext defaultPersistentStoreOptions] error:error]) {
+    if (![self hardResetCoreDataStack:error]) {
         return NO;
     }
-    if (![self hardResetCoreDataStack:error]) {
+    if (![psc destroyPersistentStoreAtURL:location withType:type options:[MCTObjectContext defaultPersistentStoreOptions] error:error]) {
         return NO;
     }
 
