@@ -2,7 +2,7 @@ machine:
   environment:
     LANG: en_US.UTF-8
   xcode:
-    version: "7.0"
+    version: "8.0"
 test:
   override:
     - set -o pipefail &&
@@ -10,7 +10,7 @@ test:
         -project MCTObjectStore.xcodeproj
         -scheme MCTObjectStore
         -sdk iphonesimulator
-        -destination 'platform=iOS Simulator,name=iPhone 6'
+        -destination 'id=2D96E690-BFB5-44D5-8B22-31D9C57EDADF'
         clean
         test
       | xcpretty -c
