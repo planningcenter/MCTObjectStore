@@ -311,7 +311,7 @@
         // Different database
         return;
     }
-    [lCtx performBlockAndWait:^{
+    [lCtx performBlock:^{
         [lCtx mergeChangesFromContextDidSaveNotification:notification];
     }];
 }
