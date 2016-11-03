@@ -100,6 +100,10 @@
         person.firstName = @"Test Edit";
     }];
 
+    [self.store.context performBlockAndWait:^{
+        [self.store.context refreshAllObjects];
+    }];
+
     XCTAssertEqualObjects(personOne.firstName, @"Test Edit");
 }
 
@@ -134,6 +138,14 @@
     
     XCTAssertTrue([context save:NULL]);
     XCTAssertTrue([self.store save:NULL]);
+
+    [self.store performInContext:^(NSManagedObjectContext * _Nonnull ctx) {
+        [ctx refreshAllObjects];
+    }];
+
+    [context performInContext:^(NSManagedObjectContext * _Nonnull ctx) {
+        [ctx refreshAllObjects];
+    }];
     
     XCTAssertEqualObjects(person_1.firstName, @"Test 2");
     XCTAssertEqualObjects(person_2.firstName, @"Test 2");
