@@ -10,7 +10,7 @@ test:
         -project MCTObjectStore.xcodeproj
         -scheme MCTObjectStore
         -sdk iphonesimulator
-        -destination 'id=2D96E690-BFB5-44D5-8B22-31D9C57EDADF'
+        -destination 'id=90152803-07B2-4719-8A42-31FDF4C9D523'
         clean
         test
       | xcpretty -c
