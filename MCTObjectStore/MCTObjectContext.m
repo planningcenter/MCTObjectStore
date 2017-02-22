@@ -28,6 +28,8 @@
  *
  */
 
+@import Darwin.POSIX.pthread;
+
 #import "MCTObjectContext.h"
 #import "MCTObjectStoreVersion.h"
 #import "MCTObjectStoreLog.h"
@@ -41,12 +43,13 @@
                              userInfo:nil]; \
 }
 
-@interface MCTObjectContext ()
+@interface MCTObjectContext () {
+    pthread_mutex_t _mutex;
+}
 
 @property (atomic, strong, readwrite) NSManagedObjectContext *context;
-@property (atomic, assign, readwrite, getter=isReady) BOOL ready;
 
-@property (atomic, strong, readonly) dispatch_queue_t queue;
+@property (atomic, assign, readwrite, getter=isReady) BOOL ready;
 
 @end
 
@@ -56,35 +59,36 @@
 
 // MARK: - Getters/Setters
 - (void)setContext:(NSManagedObjectContext *)context {
-    dispatch_barrier_async(self.queue, ^{
-        _context = context;
-    });
+    pthread_mutex_lock(&_mutex);
+    _context = context;
+    pthread_mutex_unlock(&_mutex);
 }
 - (NSManagedObjectContext *)context {
-    NSManagedObjectContext __block *ctx = nil;
-    dispatch_sync(self.queue, ^{
-        ctx = _context;
-    });
+    pthread_mutex_lock(&_mutex);
+    NSManagedObjectContext *ctx = _context;
+    pthread_mutex_unlock(&_mutex);
     return ctx;
 }
 - (void)setReady:(BOOL)ready {
-    dispatch_barrier_async(self.queue, ^{
-        _ready = ready;
-    });
+    pthread_mutex_lock(&_mutex);
+    _ready = ready;
+    pthread_mutex_unlock(&_mutex);
 }
 - (BOOL)isReady {
-    BOOL __block r = NO;
-    dispatch_sync(self.queue, ^{
-        r = _ready;
-    });
-    return r;
+    pthread_mutex_lock(&_mutex);
+    BOOL ready = _ready;
+    pthread_mutex_unlock(&_mutex);
+    return ready;
 }
 
 // MARK: - Init
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _queue = dispatch_queue_create("com.ministrycentered.ObjectStore", DISPATCH_QUEUE_CONCURRENT);
+        int status = pthread_mutex_init(&_mutex, NULL);
+
+        NSAssert(status == 0, @"Failed to create mutex for context");
+
         _ready = NO;
 #if TARGET_OS_IPHONE
         [[NSNotificationCenter defaultCenter] addObserver:self
