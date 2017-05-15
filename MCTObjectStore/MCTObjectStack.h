@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)isReady;
 
-+ (instancetype)sharedStack;
+@property (class, readonly) MCTObjectStack *sharedStack;
 
 - (BOOL)prepareModelWithName:(NSString *)name bundle:(nullable NSBundle *)bundle location:(nullable NSURL *)location error:(NSError **)error;
 - (BOOL)prepareWithModel:(NSManagedObjectModel *)model location:(nullable NSURL *)location error:(NSError **)error;
