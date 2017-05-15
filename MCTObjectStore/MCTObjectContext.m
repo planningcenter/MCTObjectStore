@@ -43,6 +43,8 @@
                              userInfo:nil]; \
 }
 
+#define __assert_var __attribute__((__unused__))
+
 @interface MCTObjectContext () {
     pthread_mutex_t _mutex;
 }
@@ -85,7 +87,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        int status = pthread_mutex_init(&_mutex, NULL);
+        __assert_var int status = pthread_mutex_init(&_mutex, NULL);
 
         NSAssert(status == 0, @"Failed to create mutex for context");
 
