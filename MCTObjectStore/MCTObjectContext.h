@@ -90,7 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return Save successful
  */
-- (BOOL)save:(NSError **)error;
+- (BOOL)save:(NSError *__autoreleasing*)error;
 
 /**
  *  Handle a save error in the passed context.

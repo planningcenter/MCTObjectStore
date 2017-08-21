@@ -201,7 +201,7 @@
 }
 
 // MARK: - Saving Contexts
-- (BOOL)save:(NSError **)error {
+- (BOOL)save:(NSError *__autoreleasing*)error {
     BOOL __block success = YES;
     [self performInContext:^(NSManagedObjectContext *ctx) {
         if ([ctx hasChanges]) {
@@ -355,7 +355,7 @@
 - (NSArray *)all:(Class)type predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sort {
     return [self all:type predicate:predicate sortDescriptors:sort error:NULL];
 }
-- (NSArray *)all:(Class)type predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sort error:(NSError **)error {
+- (NSArray *)all:(Class)type predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sort error:(NSError *__autoreleasing*)error {
     CHECK_TYPE_EXE(type);
     NSArray __block *arr = nil;
     [self performInContext:^(NSManagedObjectContext *ctx) {

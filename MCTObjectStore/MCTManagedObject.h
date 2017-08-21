@@ -44,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)clearOrderCacheForName:(NSString *)name;
 
 // MARK: - Helpers
-+ (nullable id)objectForNotification:(NSNotification *)notification context:(NSManagedObjectContext *)context error:(NSError **)error;
++ (nullable id)objectForNotification:(NSNotification *)notification context:(NSManagedObjectContext *)context error:(NSError *__autoreleasing*)error;
 
 @end
 

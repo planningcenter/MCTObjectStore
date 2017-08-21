@@ -92,7 +92,7 @@
 }
 
 // MARK: - Helpers
-+ (id)objectForNotification:(NSNotification *)notification context:(NSManagedObjectContext *)context error:(NSError **)error {
++ (id)objectForNotification:(NSNotification *)notification context:(NSManagedObjectContext *)context error:(NSError *__autoreleasing*)error {
     NSParameterAssert(notification);
     NSParameterAssert(context);
     if (![notification.object isKindOfClass:[NSManagedObjectID class]]) {
