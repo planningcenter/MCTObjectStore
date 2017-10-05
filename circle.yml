@@ -2,7 +2,7 @@ machine:
   environment:
     LANG: en_US.UTF-8
   xcode:
-    version: "8.0"
+    version: "9.0"
 test:
   override:
     - set -o pipefail &&
